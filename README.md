@@ -1351,70 +1351,325 @@ ejercicios-bigdata/
 
 > **Si ya hiciste fork del repositorio, lee esto primero antes de empezar cualquier ejercicio.**
 
-### El Problema Común
+### El Problema
 
-Cuando haces fork del repositorio, obtienes una **copia en ese momento**. Durante el curso, agregaré constantemente:
-- ✅ Nuevos ejercicios (1.5-1.7, módulo 2, 3, etc.)
-- ✅ Correcciones y mejoras
-- ✅ Datasets adicionales
-- ✅ Documentación actualizada
-
-**Tu fork NO se actualiza automáticamente.** Si no sincronizas, te faltarán ejercicios y contenido nuevo.
-
-### Diagrama del Problema
+Cuando haces fork, obtienes una **copia en ese momento**. Durante el curso agregaré ejercicios nuevos, pero **tu fork NO se actualiza solo**.
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│ SEMANA 1: Hiciste Fork                                  │
-│ Repo Profesor: [01] [02]                                │
-│ Tu Fork:       [01] [02] ✅ Sincronizados               │
-└─────────────────────────────────────────────────────────┘
-               ⬇️ Pasan 2 semanas...
-┌─────────────────────────────────────────────────────────┐
-│ SEMANA 3: Profesor agregó ejercicios 03, 04, 05        │
-│ Repo Profesor: [01] [02] [03] [04] [05]                │
-│ Tu Fork:       [01] [02] ❌ Te faltan 03, 04, 05!       │
-└─────────────────────────────────────────────────────────┘
+SEMANA 1: Hiciste Fork
+  Repo Profesor: [01] [02]
+  Tu Fork:       [01] [02] ✅
+
+SEMANA 3: Profesor agregó ejercicios
+  Repo Profesor: [01] [02] [03] [04] [05]
+  Tu Fork:       [01] [02] ❌ (te faltan 03, 04, 05)
 ```
 
-### ✅ Solución: Sincroniza Semanalmente
+---
 
-Tienes **2 métodos** para mantener tu fork actualizado:
+### 🎯 Solución Más Fácil (Recomendada para Principiantes)
 
-#### Método 1: Desde la Terminal (3 comandos)
+**Desde GitHub Web:**
+
+1. Ve a tu fork en GitHub: `https://github.com/TU_USUARIO/ejercicios-bigdata`
+2. Verás un banner: **"This branch is X commits behind"**
+3. Click en **"Sync fork"** → **"Update branch"**
+4. En tu PC, abre la terminal:
 
 ```bash
-git fetch upstream          # Descargar cambios del profesor
-git merge upstream/main     # Fusionar con tu código
-git push origin main        # Actualizar tu fork en GitHub
+# Actualizar tu main local
+git checkout main
+git pull origin main
+
+# Ir a tu rama de trabajo y traer cambios
+git checkout tu-rama-ejercicio
+git merge main
+git push origin tu-rama-ejercicio
 ```
 
-#### Método 2: Desde GitHub (más fácil)
+✅ **Listo!** Tienes los ejercicios nuevos sin perder tu trabajo.
 
-1. Ve a tu fork en GitHub
-2. Click en **"Sync fork"** → **"Update branch"**
-3. En tu PC: `git pull origin main`
+**Frecuencia:** Haz esto cada lunes antes de clase.
 
-### 📅 Frecuencia Recomendada
+---
+
+### 📊 Diagrama Visual del Flujo
+
+**Cómo funciona la sincronización:**
 
 ```
-🔄 Cada Lunes antes de clase
-   └─ Sincroniza para tener los ejercicios nuevos
-
-💻 Durante la semana
-   └─ Trabaja normalmente en tus ejercicios
-
-📤 Cada Viernes
-   └─ Push de tu progreso a GitHub
+┌─────────────────────────────────────────────────────────────────┐
+│                    FLUJO DE SINCRONIZACIÓN                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  INICIO - Estado actual                                         │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━                                      │
+│                                                                  │
+│  📚 Repo Profesor (upstream)         🌐 Tu Fork (origin)        │
+│  ┌──────────────────────┐            ┌──────────────────────┐  │
+│  │ main:                │            │ main:                │  │
+│  │ [01][02][03][04][05] │            │ [01][02]             │  │
+│  │         ↑            │            │                      │  │
+│  │    Tiene nuevos!     │            │  Desactualizado!     │  │
+│  └──────────────────────┘            └──────────────────────┘  │
+│                                                                  │
+│  💻 Tu PC (local)                                               │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │ main: [01][02]                                           │  │
+│  │ garcia-ejercicio: [01][02] + TUS ARCHIVOS ✅             │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                                                                  │
+│  ═══════════════════════════════════════════════════════════   │
+│                                                                  │
+│  PASO 1: git checkout main                                      │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━                                     │
+│                                                                  │
+│  💻 Tu PC - Te mueves a rama main                              │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │ ✓ main: [01][02]                     ← Estás aquí        │  │
+│  │   garcia-ejercicio: [01][02] + TUS ARCHIVOS              │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                                                                  │
+│  ═══════════════════════════════════════════════════════════   │
+│                                                                  │
+│  PASO 2: git fetch upstream + git merge upstream/main           │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━       │
+│                                                                  │
+│  📚 Repo Profesor ────────────────────────> 💻 Tu PC main      │
+│  ┌──────────────────────┐                  ┌────────────────┐  │
+│  │ [01][02][03][04][05] │ ─ Descarga ───>  │ [01][02]       │  │
+│  └──────────────────────┘    [03][04][05]  │ [03][04][05] ✨│  │
+│                                             └────────────────┘  │
+│                                                                  │
+│  💻 Tu PC después del merge                                     │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │ ✓ main: [01][02][03][04][05]         ← Actualizado! ✅   │  │
+│  │   garcia-ejercicio: [01][02] + TUS ARCHIVOS              │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                                                                  │
+│  ═══════════════════════════════════════════════════════════   │
+│                                                                  │
+│  PASO 3: git checkout garcia-ejercicio                          │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━                          │
+│                                                                  │
+│  💻 Tu PC - Te mueves a tu rama de trabajo                     │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │   main: [01][02][03][04][05]                             │  │
+│  │ ✓ garcia-ejercicio: [01][02] + TUS ARCHIVOS ← Estás aquí │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                                                                  │
+│  ═══════════════════════════════════════════════════════════   │
+│                                                                  │
+│  PASO 4: git merge main                                         │
+│  ━━━━━━━━━━━━━━━━━━━━━━                                         │
+│                                                                  │
+│  💻 Combina main con tu rama de trabajo                        │
+│                                                                  │
+│  main: [01][02][03][04][05]                                     │
+│            │                                                     │
+│            │ merge (combinar)                                   │
+│            ↓                                                     │
+│  garcia-ejercicio: [01][02] + TUS ARCHIVOS                      │
+│                    [03][04][05] ✨                              │
+│                                                                  │
+│  💻 Tu PC después del merge                                     │
+│  ┌──────────────────────────────────────────────────────────┐  │
+│  │   main: [01][02][03][04][05]                             │  │
+│  │ ✓ garcia-ejercicio: [01-05] + TUS ARCHIVOS ✅            │  │
+│  │                      ↑                                    │  │
+│  │           Tienes todo: ejercicios nuevos + tu trabajo!   │  │
+│  └──────────────────────────────────────────────────────────┘  │
+│                                                                  │
+│  ═══════════════════════════════════════════════════════════   │
+│                                                                  │
+│  PASO 5: git push origin garcia-ejercicio                       │
+│  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━                         │
+│                                                                  │
+│  💻 Tu PC ──────────────────────────────> 🌐 Tu Fork           │
+│  ┌─────────────────────────┐             ┌──────────────────┐  │
+│  │ garcia-ejercicio:       │   Subir     │ garcia-ejercicio:│  │
+│  │ [01-05] + TUS ARCHIVOS  │ ─────────>  │ [01-05] + TUS   │  │
+│  └─────────────────────────┘             │     ARCHIVOS ✅  │  │
+│                                           └──────────────────┘  │
+│                                                                  │
+│  ✅ RESULTADO FINAL                                             │
+│  ━━━━━━━━━━━━━━━━━━                                             │
+│                                                                  │
+│  ✓ Tienes los ejercicios nuevos [03][04][05]                   │
+│  ✓ Tu trabajo está intacto                                     │
+│  ✓ Todo subido a GitHub                                        │
+│  ✓ Listo para crear Pull Request                               │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-### 📖 Guía Completa
+**Versión interactiva (se verá bonita en GitHub):**
 
-Para instrucciones detalladas con diagramas paso a paso, resolución de conflictos y buenas prácticas, consulta:
+```mermaid
+graph TD
+    A[👨‍🏫 Repo Profesor<br/>upstream/main<br/>01 02 03 04 05]
+    B[🌐 Tu Fork GitHub<br/>origin/main<br/>01 02]
+    C[💻 Tu PC - main<br/>01 02]
+    D[💻 Tu PC - garcia-ejercicio<br/>01 02 + TUS ARCHIVOS]
 
-**👉 [PASO 4: Actualizar Cuando el Profesor Agregue Ejercicios Nuevos](#paso-4-actualizar-cuando-el-profesor-agregue-ejercicios-nuevos)**
+    C2[💻 Tu PC - main<br/>01 02 03 04 05 ✅]
+    D2[💻 Tu PC - garcia-ejercicio<br/>01-05 + TUS ARCHIVOS ✅]
+    B2[🌐 Tu Fork GitHub<br/>garcia-ejercicio<br/>01-05 + TUS ARCHIVOS ✅]
 
-*(Busca "NIVEL 1" más arriba en este README y expande la sección)*
+    A -->|PASO 2: fetch + merge| C2
+    C2 -->|PASO 4: merge| D2
+    D2 -->|PASO 5: push| B2
+
+    style A fill:#e1f5ff,stroke:#0277bd,stroke-width:3px
+    style C2 fill:#e8f5e9,stroke:#388e3c,stroke-width:3px
+    style D2 fill:#f3e5f5,stroke:#7b1fa2,stroke-width:3px
+    style B2 fill:#fff9c4,stroke:#f57f17,stroke-width:3px
+```
+
+---
+
+### 🔧 Método Detallado (Si el Anterior No Funciona o Quieres Entender Mejor)
+
+**Situación:** Trabajas en una rama (ejemplo: `garcia-ejercicio-1.1`) y el profesor agregó ejercicios nuevos.
+
+**Objetivo:** Traer los ejercicios nuevos SIN perder tu trabajo.
+
+#### PASO 1: Guarda tu trabajo actual
+
+```bash
+# Ver qué archivos cambiaste
+git status
+
+# Guardar tus cambios
+git add entregas/1.1_sqlite/tu_apellido_nombre/
+git commit -m "Guardar mi avance"
+```
+
+#### PASO 2: Ve a tu rama main
+
+```bash
+git checkout main
+```
+
+#### PASO 3: Descarga los cambios del profesor
+
+```bash
+git fetch upstream
+git merge upstream/main
+```
+
+Ahora tu `main` local tiene los ejercicios nuevos ✅
+
+#### PASO 4: Vuelve a tu rama de trabajo
+
+```bash
+git checkout garcia-ejercicio-1.1
+```
+
+(Reemplaza `garcia-ejercicio-1.1` por el nombre de TU rama)
+
+#### PASO 5: Trae los ejercicios nuevos a tu rama
+
+```bash
+git merge main
+```
+
+**¿Qué hace esto?** Combina los ejercicios nuevos del profesor con tu trabajo. **NO borra nada tuyo.**
+
+#### PASO 6: Sube a GitHub
+
+```bash
+git push origin garcia-ejercicio-1.1
+```
+
+✅ **Listo!** Tienes los ejercicios nuevos Y tu trabajo intacto.
+
+---
+
+### 🛡️ Regla de Oro para Evitar Problemas
+
+**Trabaja SOLO en la carpeta `entregas/`:**
+
+```
+✅ BIEN - Edita solo aquí:
+entregas/1.1_sqlite/tu_apellido_nombre/
+├── ANALISIS_DATOS.md
+├── resumen_eda.md
+└── REFLEXION.md
+
+❌ MAL - NO toques esto:
+ejercicios/01_bases_de_datos/1.1_introduccion_sqlite/
+├── README.md              ← NO TOCAR
+├── eda_exploratorio.py    ← Solo ejecutar, NO modificar
+```
+
+**Si solo editas archivos en `entregas/TU_CARPETA/`, NUNCA tendrás conflictos.**
+
+---
+
+### 🔧 ¿Qué hago si Git dice "CONFLICT"?
+
+**Paso 1:** Git te dirá qué archivo tiene conflicto. Ábrelo.
+
+**Paso 2:** Verás algo así:
+
+```python
+<<<<<<< HEAD
+tu código aquí
+=======
+código del profesor
+>>>>>>> main
+```
+
+**Paso 3:** Decide qué mantener:
+- Si es un archivo del profesor que NO deberías tocar → Mantén la versión del profesor
+- Si es TU archivo de entrega → Mantén tu versión
+
+**Paso 4:** Borra las marcas `<<<<<<<`, `=======`, `>>>>>>>` y guarda.
+
+**Paso 5:** Termina el merge:
+
+```bash
+git add nombre-del-archivo
+git commit -m "Resolver conflicto"
+git push origin tu-rama
+```
+
+**Consejo:** Si trabajas solo en `entregas/TU_CARPETA/`, esto nunca te pasará.
+
+---
+
+### 📋 Resumen Ultra-Rápido
+
+```bash
+# 1. Guardar tu trabajo
+git add .
+git commit -m "Guardar avance"
+
+# 2. Actualizar main
+git checkout main
+git fetch upstream
+git merge upstream/main
+
+# 3. Volver a tu rama y traer cambios
+git checkout tu-rama
+git merge main
+
+# 4. Subir
+git push origin tu-rama
+```
+
+**Frecuencia:** Haz esto cada lunes antes de clase.
+
+---
+
+### 📚 Más Información
+
+Si quieres entender TODO el flujo de trabajo con Git desde cero, consulta la sección completa arriba en este README:
+
+**👉 [NIVEL 1: Tengo Git y GitHub, ¿Ahora Qué?](#nivel-1-tengo-git-y-github-ahora-qué)** *(Expande la sección)*
+
+Ahí encontrarás diagramas detallados de cada paso del proceso Fork → Clone → Work → Push → PR.
 
 ---
 
