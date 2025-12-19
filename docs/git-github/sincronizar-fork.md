@@ -205,7 +205,7 @@ Trabajas en una rama (ejemplo: `garcia-ejercicio-1.1`) y el profesor agrego ejer
 git status
 
 # Guardar tus cambios
-git add entregas/1.1_sqlite/tu_apellido_nombre/
+git add entregas/01_bases_de_datos/tu_apellido_nombre/
 git commit -m "Guardar mi avance"
 ```
 
@@ -284,7 +284,7 @@ gitGraph
 flowchart LR
     subgraph Bien["✅ BIEN - Edita solo aquí"]
         direction TB
-        B1["📁 entregas/1.1_sqlite/tu_apellido_nombre/<br/><br/>├── ANALISIS_DATOS.md<br/>├── resumen_eda.md<br/>└── REFLEXION.md<br/><br/>✅ Aquí haces tus cambios"]
+        B1["📁 entregas/01_bases_de_datos/tu_apellido_nombre/<br/><br/>├── 1.1_sqlite/<br/>│   ├── ANALISIS_DATOS.md<br/>│   ├── resumen_eda.md<br/>│   └── REFLEXION.md<br/><br/>✅ Aquí haces tus cambios"]
     end
 
     subgraph Mal["❌ MAL - NO toques esto"]

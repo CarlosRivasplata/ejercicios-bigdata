@@ -189,10 +189,21 @@ nav:
 
   - Ejercicios:
     - ejercicios/index.md
-    - '01 - Introduccion SQLite': ejercicios/01-introduccion-sqlite.md
+    - Bases de Datos:
+      - '1.1 - Introduccion SQLite': ejercicios/01-introduccion-sqlite.md
+      - '2.1 - PostgreSQL HR': ejercicios/02-postgresql-hr.md
+      - '2.2 - PostgreSQL Jardineria': ejercicios/03-postgresql-jardineria.md
+      - '2.3 - Migracion SQLite → PostgreSQL': ejercicios/04-migracion-sqlite-postgresql.md
+      - '3.1 - Oracle HR': ejercicios/05-oracle-hr.md
+      - '5.1 - Analisis Excel/Python': ejercicios/06-analisis-excel-python.md
+    - Big Data y ETL:
+      - '02 - Pipeline ETL QoG': ejercicios/02-pipeline-etl-qog.md
 
   - Dashboards:
     - dashboards/index.md
+
+  - Entregas:
+    - Guia General de Entregas: entregas/guia-entregas.md
 
   - FAQ: faq.md
 
