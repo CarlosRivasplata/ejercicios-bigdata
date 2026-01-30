@@ -205,7 +205,16 @@ nav:
       - 'NLP y Texto': ejercicios/05-nlp-mining.md
     - 'Proyecto Final': ejercicios/06-trabajo-final-capstone.md
 
-  - Dashboards Interactivos: dashboards/index.md
+  - Dashboards y Resultados:
+    - dashboards/index.md
+    - 'Machine Learning':
+      - 'PCA + K-Means Iris': dashboards/02_pca_iris_clustering.md
+      - 'PCA estilo FactoMineR': dashboards/02_PCA_FactoMineR_style.md
+    - 'NLP y Text Mining':
+      - 'Conteo de Palabras': dashboards/EJERCICIO_01_CONTEO.md
+      - 'Filtro de Stopwords': dashboards/EJERCICIO_02_LIMPIEZA.md
+      - 'Similitud de Jaccard': dashboards/04_similitud_jaccard.md
+      - 'Vectorizacion y Clustering': dashboards/05_vectorizacion_y_clustering.md
 
   - Entregas:
     - Guia General: entregas/guia-entregas.md
