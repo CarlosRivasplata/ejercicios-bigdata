@@ -44,32 +44,57 @@ ejercicios/06_analisis_datos_de_panel/
 
 ---
 
-## Scripts y Analisis
+## Ejercicios Practicos
 
-### 01 - Analisis Guns (Leyes de Armas)
+### 01 - Analisis Guns: Leyes de Armas y Criminalidad
 
-Efecto de las leyes de portacion de armas sobre las tasas de criminalidad en EE.UU.
-Modelo: Panel OLS con Efectos Fijos por estado.
+**Pregunta:** Las leyes de portacion de armas reducen la criminalidad violenta?
 
-**Dataset:** Guns (Stock & Watson)
-**Metodologia:** Panel OLS con Fixed Effects
+- **Dataset:** [Guns](https://vincentarelbundock.github.io/Rdatasets/csv/AER/Guns.csv) (Stock & Watson) - 50 estados de EE.UU., 1977-1999
+- **Variable dependiente:** `log(violent)` - tasa de criminalidad violenta (logaritmo)
+- **Variable clave:** `law` - si el estado tiene ley "shall-carry" (portacion obligatoria)
+- **Controles:** ingreso, poblacion, densidad
+- **Modelos:** Pooled OLS vs Fixed Effects vs Random Effects
+- **Metodologia:** Comparacion de los 3 modelos + Test de Hausman
 
-### 02 - Analisis Fatality (Mortalidad en Trafico)
+```bash
+python ejercicios/06_analisis_datos_de_panel/01_analisis_guns.py
+```
 
-Efecto del impuesto a la cerveza sobre la mortalidad por accidentes de trafico.
-Modelo: Two-Way Fixed Effects (estado + anio).
+### 02 - Analisis Fatality: Impuesto a la Cerveza y Mortalidad
 
-**Dataset:** AER Fatalities
-**Metodologia:** Two-Way FE (PanelOLS con EntityEffects + TimeEffects)
+**Pregunta:** Subir el impuesto a la cerveza reduce las muertes por accidentes de trafico?
 
-### 03 - Dashboard Educativo Interactivo
+- **Dataset:** [Fatalities](https://vincentarelbundock.github.io/Rdatasets/csv/AER/Fatalities.csv) (AER) - 48 estados, 1982-1988
+- **Variable dependiente:** `fatality_rate` - muertes por 10,000 habitantes
+- **Variable clave:** `beertax` - impuesto a la cerveza
+- **Controles:** edad minima para beber (`drinkage`), desempleo, ingreso
+- **Modelos:** Entity FE vs **Two-Way Fixed Effects** (estado + anio)
+- **Innovacion:** TWFE controla tendencias temporales (coches mas seguros cada anio)
 
-Dashboard con 4 pestanas interactivas para entender visualmente los conceptos:
+```bash
+python ejercicios/06_analisis_datos_de_panel/02_analisis_fatality.py
+```
 
-1. **Pooled OLS:** Slider de heterogeneidad que muestra la Paradoja de Simpson
+### 03 - Dashboard Educativo Interactivo (Panel + Altair)
+
+Dashboard local con 4 pestanas interactivas para explorar los conceptos visualmente:
+
+1. **Pooled OLS:** Slider de heterogeneidad que muestra la Paradoja de Simpson en accion
 2. **FE vs RE:** Explicacion y tabla de decision del Test de Hausman
-3. **Odds Ratios:** Sliders para explorar probabilidad vs odds vs odds ratio
-4. **Efectos Marginales:** Comparacion Lin-Lin, Log-Lin, Log-Log con graficos
+3. **Odds Ratios:** Sliders para explorar probabilidad vs odds vs odds ratio en tiempo real
+4. **Efectos Marginales:** Comparacion Lin-Lin, Log-Lin, Log-Log con graficos dinamicos
+
+```bash
+panel serve ejercicios/06_analisis_datos_de_panel/03_dashboard_educativo.py
+# Abrir http://localhost:5006 en el navegador
+```
+
+### Archivos adicionales
+
+- **`conceptos_visuales_panel.py`** - Genera graficos estaticos explicando los conceptos de panel
+- **`dashboard_educativo_panel.py`** - Version alternativa del dashboard educativo
+- **`GUIA_PANEL_DATA.md`** - Guia teorica completa: Pooled OLS, FE, RE, Hausman, TWFE
 
 ---
 
@@ -106,13 +131,24 @@ Decide entre FE y RE:
 
 ---
 
-## Dashboard Interactivo
+## Dashboards
 
-Puedes explorar los resultados del analisis de panel en el dashboard:
+### Dashboard Educativo (local)
 
-[Ver Dashboard Panel Data - QoG](../dashboards/06_analisis_panel_qog.md){ .md-button .md-button--primary }
+El dashboard principal de este modulo se ejecuta localmente con Panel (HoloViz):
 
-El dashboard incluye 5 pestanas: Asia Central, Seguridad Hidrica, Terrorismo, Maghreb y PCA+K-Means.
+```bash
+panel serve ejercicios/06_analisis_datos_de_panel/03_dashboard_educativo.py
+```
+
+Incluye 4 pestanas interactivas: Pooled OLS, FE vs RE, Odds Ratios, Efectos Marginales.
+
+### Dashboard QoG - Analisis Avanzado (GitHub Pages)
+
+Como complemento, puedes explorar un dashboard con analisis de panel aplicado al dataset QoG
+(4 lineas de investigacion con Spark + PostgreSQL + ML):
+
+[Ver Dashboard QoG - Panel Data Aplicado](../dashboards/06_analisis_panel_qog.md){ .md-button }
 
 ---
 
