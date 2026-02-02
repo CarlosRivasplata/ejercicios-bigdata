@@ -235,7 +235,24 @@ Copia la plantilla desde `trabajo_final/plantilla/` a tu carpeta de entrega.
 
 ## Recursos
 
+- **Material teorico del curso:** `ejercicios/07_infraestructura_bigdata/` (Docker, Spark, Hadoop)
 - **Spark Documentation:** https://spark.apache.org/docs/3.5.4/
 - **Docker Compose:** https://docs.docker.com/compose/
 - **QoG Codebook:** https://www.gu.se/en/quality-government/qog-data (descargar codebook para ver que significa cada variable)
 - **Spark UI:** Una vez levantado tu cluster, http://localhost:8080 (o el puerto que hayas configurado)
+
+---
+
+-------------------------
+Autor original/Referencia: @TodoEconometria
+Profesor: Juan Marcelo Gutierrez Miranda
+Metodologia: Cursos Avanzados de Big Data, Ciencia de Datos,
+             Desarrollo de aplicaciones con IA & Econometria Aplicada.
+Hash ID de Certificacion: 4e8d9b1a5f6e7c3d2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c
+Repositorio: https://github.com/TodoEconometria/certificaciones
+
+REFERENCIA ACADEMICA:
+- Zaharia, M., et al. (2016). Apache Spark: A unified engine for big data processing. Communications of the ACM, 59(11), 56-65.
+- Teorey, T., et al. (2011). Quality of Government Standard Dataset. University of Gothenburg.
+- Merkel, D. (2014). Docker: Lightweight Linux Containers for Consistent Development and Deployment. Linux Journal, 2014(239), 2.
+-------------------------
