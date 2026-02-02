@@ -99,7 +99,10 @@ entregas/**/.env
 # 2. Scripts de administración del profesor (NO publicar)
 scripts/
 
-# 3. Configuración local y secretos
+# 3. Modulo 07 oculto temporalmente (no publicar hasta fecha indicada)
+ejercicios/07_infraestructura_bigdata/
+
+# 4. Configuración local y secretos
 .env
 .env.local
 secrets.txt

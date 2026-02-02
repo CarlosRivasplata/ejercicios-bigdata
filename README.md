@@ -47,7 +47,6 @@ ejercicios-bigdata/
 │   ├── 04_machine_learning/
 │   ├── 05_nlp_text_mining/
 │   ├── 06_análisis_datos_de_panel/
-│   ├── 07_infraestructura_bigdata/  # Docker, Spark, Hadoop (teoria)
 │   └── utils/                  # Herramientas auxiliares (Parquet, Spark)
 │
 ├── datos/                      # Instrucciones y scripts de descarga
