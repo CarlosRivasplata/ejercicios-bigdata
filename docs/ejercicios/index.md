@@ -29,6 +29,7 @@ Lista completa de todos los ejercicios disponibles en el curso.
 | # | Ejercicio | Tecnologia | Nivel | Estado |
 |---|-----------|------------|-------|--------|
 | 04 | [Machine Learning](04-machine-learning.md) | Scikit-Learn, PCA, K-Means | Avanzado | Disponible |
+| 04.2 | [Transfer Learning Flores](04-machine-learning.md#ejercicio-42-transfer-learning-clasificacion-de-flores) | TensorFlow, MobileNetV2 | Avanzado | Disponible |
 | ARIMA | [Series Temporales](07-series-temporales-arima.md) | ARIMA/SARIMA, Box-Jenkins | Avanzado | Disponible |
 | 05 | [NLP y Text Mining](05-nlp-mining.md) | NLTK, TF-IDF, Jaccard | Avanzado | Disponible |
 
@@ -208,6 +209,24 @@ Lista completa de todos los ejercicios disponibles en el curso.
 - Perfilado de clusters
 
 [Ver Ejercicio Completo](04-machine-learning.md){ .md-button }
+
+---
+
+### [Transfer Learning: Clasificacion de Flores](04-machine-learning.md#ejercicio-42-transfer-learning-clasificacion-de-flores)
+
+!!! info "Detalles"
+    - **Nivel:** Avanzado
+    - **Tecnologias:** TensorFlow, MobileNetV2, Scikit-Learn
+    - **Dataset:** TensorFlow Flowers (3,670 imagenes, 5 clases)
+
+**Que aprenderas:**
+
+- Transfer Learning con redes pre-entrenadas (ImageNet)
+- Extraccion de embeddings con CNNs
+- Clasificacion de imagenes con ML tradicional (KNN, SVM, Random Forest)
+- Visualizacion t-SNE de espacios de alta dimension
+
+[Ver Dashboard Interactivo](../dashboards/dashboard_flores.html){ .md-button target="_blank" }
 
 ---
 
