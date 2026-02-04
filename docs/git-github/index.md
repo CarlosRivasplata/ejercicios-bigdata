@@ -47,7 +47,7 @@ graph LR
 ```
 
 !!! success "Sistema simplificado"
-    **No necesitas crear Pull Request.** El profesor revisa tu fork
+    **No necesitas crear Pull Request.** El sistema evalua tu `PROMPTS.md`
     automaticamente. Solo sube tu trabajo con `git push`.
 
 ---
@@ -70,7 +70,7 @@ graph LR
     - Compartir codigo publicamente
     - Colaborar con otros desarrolladores
     - Alojar proyectos
-    - Gestionar Pull Requests
+    - Gestionar proyectos y colaboracion
 
 ```
 ┌─────────────────────────────────────────────────────────────┐

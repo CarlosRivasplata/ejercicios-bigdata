@@ -13,8 +13,8 @@ Esta guia te explica **paso a paso** como entregar. No necesitas saber Git avanz
 4. El profesor revisa TU fork automaticamente (sin PR)
 ```
 
-**NO necesitas crear Pull Request.** El profesor tiene un sistema automatico
-que revisa todos los forks.
+**NO necesitas crear Pull Request.** El sistema automatico evalua
+tu archivo **PROMPTS.md** directamente en tu fork.
 
 ---
 
@@ -169,8 +169,8 @@ git push
 3. Verifica que estan todos tus archivos
 
 !!! success "Listo!"
-    No necesitas hacer nada mas. El profesor tiene un sistema automatico
-    que revisa todos los forks y genera notas.
+    No necesitas hacer nada mas. El sistema automatico revisa tu archivo
+    **PROMPTS.md** y genera notas basado en tu proceso de aprendizaje.
 
 ---
 
@@ -242,18 +242,22 @@ El `.gitignore` ya protege esto, pero recuerda:
 
 ---
 
-## Como se Evalua (Sistema Automatico)
+## Como se Evalua (Sistema por PROMPTS)
 
-El profesor ejecuta un script que:
+!!! danger "LO MAS IMPORTANTE: PROMPTS.md"
+    **El archivo PROMPTS.md es lo que se evalua.** No el codigo, no el YAML,
+    sino TUS PROMPTS de IA documentados con capturas de pantalla.
+
+El sistema automatico revisa:
 
 ```
-1. Lee la lista de alumnos (18 forks)
+1. Lee la lista de alumnos (forks registrados)
 2. Para cada fork:
-   - Verifica que existe PROMPTS.md
-   - Analiza estructura y contenido
-   - Detecta similitud con ejemplo del profesor
-   - Verifica coherencia blueprint vs codigo
-   - Calcula nota automatica
+   - Verifica que existe PROMPTS.md (OBLIGATORIO)
+   - Analiza calidad y autenticidad de los prompts
+   - Verifica que hay capturas de pantalla (prompt_A.png, etc.)
+   - Revisa coherencia entre prompts y codigo entregado
+   - Calcula nota automatica basada en proceso de aprendizaje
 3. Genera reporte con:
    - Ranking de todos
    - Destacados (posible bonus)

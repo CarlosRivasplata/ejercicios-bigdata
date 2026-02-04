@@ -339,7 +339,7 @@ Lista completa de todos los ejercicios disponibles en el curso.
 4. **Trabajar en pasos pequenos** - No intentes hacerlo todo de una vez
 5. **Probar frecuentemente** - Ejecuta tu codigo cada vez que completes una parte
 6. **Hacer commits regulares** - Guarda tu progreso frecuentemente
-7. **Crear Pull Request** - Cuando completes el ejercicio
+7. **Subir con git push** - Cuando completes, el sistema evalua tu PROMPTS.md
 
 ---
 

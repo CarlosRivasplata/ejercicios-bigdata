@@ -10,6 +10,18 @@
 
 ---
 
+!!! warning "Alumnos del Curso: Como Entregar tus Trabajos"
+    **Antes de empezar cualquier ejercicio**, lee la [Guia de Entregas](entregas/guia-entregas.md).
+
+    Ahi encontraras:
+
+    - Como hacer fork y clonar el repositorio
+    - Donde colocar tus archivos de entrega
+    - Como subir tu trabajo (sin Pull Request)
+    - Como funciona la evaluacion automatica
+
+---
+
 ## Que es Esto y Por Que Existe?
 
 ### El Problema

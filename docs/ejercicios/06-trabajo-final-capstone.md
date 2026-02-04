@@ -167,11 +167,11 @@ Copia la plantilla desde `trabajo_final/plantilla/` a tu carpeta de entrega.
 3. **Completa PROMPTS.md mientras trabajas** - Este archivo es lo que se evalua
 4. Completa los archivos (01 al 05) + `docker-compose.yml` + `pipeline.py`
 5. Sube a tu fork: `git add . && git commit -m "Trabajo Final" && git push`
-6. **Listo!** El profesor revisa tu fork automaticamente
+6. **Listo!** El sistema evalua tu PROMPTS.md automaticamente
 
 !!! success "No necesitas crear Pull Request"
-    El profesor tiene un sistema automatico que revisa todos los forks.
-    Solo asegurate de subir tu trabajo a tu fork con `git push`.
+    El sistema automatico evalua tu archivo **PROMPTS.md** directamente en tu fork.
+    Solo asegurate de subir tu trabajo con `git push`.
 
 ### Prohibido incluir
 

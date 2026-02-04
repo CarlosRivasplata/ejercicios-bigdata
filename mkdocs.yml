@@ -180,6 +180,7 @@ nav:
     - Tu Primer Ejercicio: guia-inicio/primer-ejercicio.md
     - Roadmap del Curso: guia-inicio/roadmap.md
     - Infraestructura del Lab: infraestructura.md
+    - Guia de Entregas: entregas/guia-entregas.md
 
   - Git y GitHub:
     - git-github/index.md
@@ -189,6 +190,7 @@ nav:
 
   - Ejercicios:
     - ejercicios/index.md
+    - Guia de Entregas: entregas/guia-entregas.md
     - 'Modulo 1: Bases de Datos':
       - '1.1 - Introduccion SQLite': ejercicios/01-introduccion-sqlite.md
       - '2.1 - PostgreSQL HR': ejercicios/02-postgresql-hr.md

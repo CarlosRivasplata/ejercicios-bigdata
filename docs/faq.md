@@ -168,7 +168,7 @@ Lo necesitas porque:
 - :lock: No puedes modificar el repositorio del profesor directamente
 - :pencil2: El fork es TU espacio para trabajar
 - :arrows_counterclockwise: Puedes sincronizarlo con el original
-- :outbox_tray: El profesor revisa tu fork automaticamente
+- :outbox_tray: El sistema evalua automaticamente tus PROMPTS en tu fork
 
 Ver guia completa: [Fork y Clone](git-github/fork-clone.md)
 
@@ -275,7 +275,7 @@ Copia el mensaje de error y buscalo. Probablemente alguien mas ya lo tuvo.
 El objetivo es **aprender**, no aprobar rapidamente.
 
 - Puedes actualizar tu fork cuantas veces quieras con `git push`
-- El sistema de evaluacion automatica revisa tu ultimo trabajo
+- El sistema de evaluacion automatica revisa tu archivo PROMPTS.md
 - Aprendes mas de los errores que de los aciertos
 
 ---
@@ -298,7 +298,7 @@ El objetivo es **aprender**, no aprobar rapidamente.
     seaborn==0.12.0  # Para visualizaciones avanzadas
     ```
 
-    Y en el PR explica: "Use seaborn para crear graficos mas profesionales"
+    Y en tu archivo `PROMPTS.md` menciona: "Use seaborn para crear graficos mas profesionales"
 
 ---
 
