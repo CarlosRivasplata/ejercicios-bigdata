@@ -185,8 +185,6 @@ nav:
     - git-github/index.md
     - Fork y Clone: git-github/fork-clone.md
     - Sincronizar Fork: git-github/sincronizar-fork.md
-    - PR Limpio (Sin Commits Mezclados): git-github/pr-limpio.md
-    - Crear Pull Requests: git-github/pull-requests.md
     - Comandos Utiles: git-github/comandos-utiles.md
 
   - Ejercicios:

@@ -181,33 +181,51 @@ Responde en `05_RESPUESTAS.md`:
 
 ```
 entregas/trabajo_final/apellido_nombre/
+    PROMPTS.md                 <- LO MAS IMPORTANTE (tus prompts de IA)
     01_README.md               <- (1) Tus datos + pregunta de investigacion
-    02_INFRAESTRUCTURA.md      <- (2) Explicacion YAML + prompts IA + captura Spark UI
-    03_RESULTADOS.md           <- (3) Graficos + interpretacion + prompts de graficos
-    04_REFLEXION_IA.md         <- (4) 3 Momentos Clave x 3 bloques + prompts clave
+    02_INFRAESTRUCTURA.md      <- (2) Explicacion YAML + captura Spark UI
+    03_RESULTADOS.md           <- (3) Graficos + interpretacion
+    04_REFLEXION_IA.md         <- (4) 3 Momentos Clave x 3 bloques
     05_RESPUESTAS.md           <- (5) 4 preguntas de comprension
     docker-compose.yml         <- Tu YAML funcional
     pipeline.py                <- ETL + Analisis
     requirements.txt           <- Dependencias (pip freeze)
-    capturas/                  <- Tus capturas de pantalla (Spark UI, prompts, graficos)
+    capturas/                  <- Capturas OBLIGATORIAS:
+        prompt_A.png           <- Captura de tu prompt A
+        prompt_B.png           <- Captura de tu prompt B
+        prompt_C.png           <- Captura de tu prompt C
+        spark_ui.png           <- Captura de Spark funcionando
     .gitignore                 <- Excluir datos, venv, __pycache__
 ```
 
-Los numeros indican el **orden en que debes completarlos**. Empieza por el 01.
-
 Copia la plantilla desde `trabajo_final/plantilla/` a tu carpeta de entrega.
 
-### Proceso
+### Proceso (SIN Pull Request)
 
-1. Sincroniza tu fork con el repositorio principal
-2. Crea una rama: `git checkout -b apellido-trabajo-final`
-3. Copia la plantilla: `cp -r trabajo_final/plantilla/ entregas/trabajo_final/apellido_nombre/`
-4. Crea la carpeta de capturas: `mkdir entregas/trabajo_final/apellido_nombre/capturas/`
-5. Completa los archivos **en orden** (01 al 05), junto con `docker-compose.yml` y `pipeline.py`
-6. Commit y push a tu fork
-7. Crea un Pull Request con titulo: `[TF] Apellido Nombre - Tu Pregunta de Investigacion`
+1. Sincroniza tu fork: `git fetch upstream && git merge upstream/main`
+2. Copia la plantilla: `cp -r trabajo_final/plantilla/ entregas/trabajo_final/apellido_nombre/`
+3. Crea la carpeta de capturas: `mkdir entregas/trabajo_final/apellido_nombre/capturas/`
+4. **Completa PROMPTS.md** mientras trabajas (documenta tus prompts de IA)
+5. Completa los demas archivos (01 al 05) + `docker-compose.yml` + `pipeline.py`
+6. Sube a tu fork: `git add . && git commit -m "Trabajo Final" && git push`
+7. **Listo!** El profesor revisa tu fork automaticamente (no necesitas crear PR)
 
-### Prohibido incluir en el PR
+### IMPORTANTE: Sistema de Evaluacion por Prompts
+
+**El archivo PROMPTS.md es lo que se evalua principalmente.**
+
+Este archivo tiene 2 partes:
+
+| Parte | Que poner | Como debe verse |
+|-------|-----------|-----------------|
+| **PARTE 1** | Tus 3 prompts reales (A, B, C) | Con errores, informal, TAL CUAL lo escribiste |
+| **PARTE 2** | Blueprint generado por IA | Perfecto, profesional (lo genera la IA al final) |
+
+**REGLA CRITICA:** Los prompts de la Parte 1 deben ser COPIA EXACTA de lo que
+escribiste. NO los corrijas. Si escribiste "como ago q spark lea csv" con errores,
+pega ESO. **El sistema detecta si "limpiaste" tus prompts.**
+
+### Prohibido incluir
 
 - Archivos de datos (.csv, .parquet, .db)
 - Entornos virtuales (venv/, .venv/)
