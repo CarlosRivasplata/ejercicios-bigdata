@@ -400,21 +400,29 @@ Cluster Real:                    Cluster Docker:
 
 ### Imagenes Docker para Spark
 
-Existen dos opciones principales:
+La imagen oficial es **apache/spark**, mantenida por el proyecto Apache:
 
-| Imagen | Ventajas | Desventajas |
-|--------|----------|-------------|
-| **apache/spark** | Oficial del proyecto Apache, siempre actualizada | Requiere mas configuracion manual |
-| **bitnami/spark** | Pre-configurada, variables de entorno claras, facil de usar | Puede retrasarse en versiones |
+| Imagen | Estado | Notas |
+|--------|--------|-------|
+| **apache/spark** | **Activa** (recomendada) | Oficial del proyecto Apache, siempre actualizada |
+| **bitnami/spark** | **Descontinuada** (sept. 2025) | Ya no recibe actualizaciones, no usar en proyectos nuevos |
 
-Para este curso usamos **bitnami/spark** por su facilidad de configuracion:
+Para este curso usamos **apache/spark:3.5.4-python3**. A diferencia de bitnami,
+el arranque se hace con comandos explicitos:
 
 ```yaml
-# Variables de entorno clave de bitnami/spark:
-SPARK_MODE: master | worker       # Define si es master o worker
-SPARK_MASTER_URL: spark://master:7077  # A donde se conecta el worker
+# Arrancar el Master:
+command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
+
+# Arrancar un Worker (apuntando al Master):
+command: >
+  /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker
+  spark://spark-master:7077
+
+# Variables de entorno del Worker:
 SPARK_WORKER_CORES: 2             # Cores asignados al worker
-SPARK_WORKER_MEMORY: 4g           # Memoria asignada al worker
+SPARK_WORKER_MEMORY: 4G           # Memoria asignada al worker
+SPARK_NO_DAEMONIZE: true          # Mantiene el proceso en primer plano (necesario en Docker)
 ```
 
 ### Volumenes compartidos
@@ -458,80 +466,38 @@ local), surgen problemas:
 **Solucion recomendada:** Ejecutar el Driver **dentro** del cluster Docker,
 ya sea mediante `docker exec` o con un contenedor adicional dedicado al Driver.
 
-### Ejemplo real: docker-compose.yml
+### Ejemplo funcional: docker-compose.yml
+
+Este es el **minimo funcional** para el Trabajo Final: PostgreSQL + Spark Master + 1 Worker.
+Puedes copiar y pegar este archivo tal cual y funcionara.
+
+> **Nota:** Usamos `apache/spark:3.5.4-python3` (imagen oficial de Apache).
+> La imagen `bitnami/spark` fue **descontinuada en septiembre 2025** y ya
+> no recibe actualizaciones. La imagen oficial de Apache requiere iniciar
+> los procesos via `command` en lugar de variables de entorno.
 
 ```yaml
-# docker-compose.yml - Cluster Spark + PostgreSQL
-version: '3.8'
+# docker-compose.yml - Cluster Spark + PostgreSQL (minimo para Trabajo Final)
+#
+# Uso:
+#   docker compose up -d          # Levantar todo
+#   docker compose ps             # Verificar estado
+#   docker compose down           # Apagar
+#
+# Estructura de carpetas necesaria:
+#   tu_proyecto/
+#   ├── docker-compose.yml   (este archivo)
+#   ├── datos/               (tu CSV del QoG va aqui)
+#   ├── scripts/             (tus scripts Python van aqui)
+#   └── jars/                (driver JDBC de PostgreSQL)
 
 services:
-  # ============================
-  # SPARK MASTER
-  # ============================
-  spark-master:
-    image: bitnami/spark:3.5
-    container_name: spark-master
-    hostname: spark-master
-    environment:
-      - SPARK_MODE=master
-      - SPARK_MASTER_HOST=spark-master
-      - SPARK_MASTER_PORT=7077
-      - SPARK_MASTER_WEBUI_PORT=8080
-    ports:
-      - "7077:7077"    # Comunicacion del cluster
-      - "8080:8080"    # Web UI del Master
-    volumes:
-      - ./datos:/datos           # Datos compartidos
-      - ./scripts:/scripts       # Scripts Python
-      - ./jars:/opt/spark-jars   # JARs adicionales (JDBC, etc.)
-    networks:
-      - spark-network
 
   # ============================
-  # SPARK WORKER 1
-  # ============================
-  spark-worker-1:
-    image: bitnami/spark:3.5
-    container_name: spark-worker-1
-    hostname: spark-worker-1
-    environment:
-      - SPARK_MODE=worker
-      - SPARK_MASTER_URL=spark://spark-master:7077
-      - SPARK_WORKER_CORES=2
-      - SPARK_WORKER_MEMORY=4g
-    volumes:
-      - ./datos:/datos           # Mismos datos que el master
-      - ./scripts:/scripts       # Mismos scripts
-    depends_on:
-      - spark-master
-    networks:
-      - spark-network
-
-  # ============================
-  # SPARK WORKER 2
-  # ============================
-  spark-worker-2:
-    image: bitnami/spark:3.5
-    container_name: spark-worker-2
-    hostname: spark-worker-2
-    environment:
-      - SPARK_MODE=worker
-      - SPARK_MASTER_URL=spark://spark-master:7077
-      - SPARK_WORKER_CORES=2
-      - SPARK_WORKER_MEMORY=4g
-    volumes:
-      - ./datos:/datos
-      - ./scripts:/scripts
-    depends_on:
-      - spark-master
-    networks:
-      - spark-network
-
-  # ============================
-  # POSTGRESQL (para guardar resultados)
+  # POSTGRESQL - Base de datos
   # ============================
   postgres:
-    image: postgres:16
+    image: postgres:16-alpine
     container_name: spark-postgres
     hostname: postgres
     environment:
@@ -544,6 +510,60 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - spark-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U spark_user -d resultados_spark"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ============================
+  # SPARK MASTER
+  # ============================
+  spark-master:
+    image: apache/spark:3.5.4-python3
+    container_name: spark-master
+    hostname: spark-master
+    command: /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master
+    environment:
+      - SPARK_MASTER_HOST=spark-master
+      - SPARK_MASTER_PORT=7077
+      - SPARK_MASTER_WEBUI_PORT=8080
+      - SPARK_NO_DAEMONIZE=true
+    ports:
+      - "7077:7077"    # Comunicacion del cluster
+      - "8080:8080"    # Web UI del Master
+    volumes:
+      - ./datos:/opt/spark-data        # Datos compartidos
+      - ./scripts:/opt/spark-apps      # Scripts Python
+      - ./jars:/opt/spark-jars         # JARs (JDBC, etc.)
+    networks:
+      - spark-network
+
+  # ============================
+  # SPARK WORKER
+  # ============================
+  spark-worker-1:
+    image: apache/spark:3.5.4-python3
+    container_name: spark-worker-1
+    hostname: spark-worker-1
+    command: >
+      /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker
+      spark://spark-master:7077
+    environment:
+      - SPARK_WORKER_MEMORY=4G
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_WEBUI_PORT=8081
+      - SPARK_NO_DAEMONIZE=true
+    ports:
+      - "8081:8081"    # Web UI del Worker
+    volumes:
+      - ./datos:/opt/spark-data        # Mismos datos que el master
+      - ./scripts:/opt/spark-apps      # Mismos scripts
+      - ./jars:/opt/spark-jars         # Mismos JARs
+    depends_on:
+      - spark-master
+    networks:
+      - spark-network
 
 volumes:
   postgres_data:
@@ -553,26 +573,45 @@ networks:
     driver: bridge
 ```
 
+**Diferencias clave vs `bitnami/spark` (descontinuada):**
+
+| Aspecto | `bitnami/spark` (vieja) | `apache/spark` (actual) |
+|---------|------------------------|------------------------|
+| Arranque | Variables `SPARK_MODE=master` | Comando explicito con `spark-class` |
+| Ruta de datos | Cualquiera | `/opt/spark-data` (convencion) |
+| Ruta de scripts | Cualquiera | `/opt/spark-apps` (convencion) |
+| Estado | **Descontinuada** (sept. 2025) | Mantenida por Apache |
+
 **Levantar el cluster:**
 
 ```bash
+# Crear las carpetas necesarias (si no existen)
+mkdir datos scripts jars
+
 # Iniciar todo el cluster
 docker compose up -d
 
 # Verificar que los servicios estan corriendo
 docker compose ps
 
-# Ver los logs del master
+# Ver los logs del master (confirmar que el worker se conecto)
 docker compose logs spark-master
 
+# Abrir Spark UI en el navegador:
+#   http://localhost:8080   -> Veras el worker conectado
+
 # Ejecutar un script dentro del cluster
-docker exec spark-master spark-submit \
+docker exec spark-master /opt/spark/bin/spark-submit \
     --master spark://spark-master:7077 \
-    /scripts/mi_analisis.py
+    /opt/spark-apps/mi_analisis.py
 
 # Apagar el cluster
 docker compose down
 ```
+
+> **Para agregar un segundo Worker:** Copia el bloque `spark-worker-1`,
+> renombralo a `spark-worker-2`, cambia el `container_name`, `hostname`
+> y mapea el puerto a `8082:8081`. Eso es todo.
 
 ---
 
@@ -1447,7 +1486,7 @@ Desventajas:
 
 6. Apache Spark Documentation: https://spark.apache.org/docs/3.5.4/
 
-7. Bitnami Spark Docker Image: https://hub.docker.com/r/bitnami/spark
+7. Apache Spark Docker Image: https://hub.docker.com/r/apache/spark
 
 8. PostgreSQL JDBC Driver: https://jdbc.postgresql.org/
 

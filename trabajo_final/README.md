@@ -50,8 +50,8 @@ documentar como las usaste y que aprendiste.
 6. Escribe `INFRAESTRUCTURA.md` explicando **cada seccion** de tu YAML con tus palabras
 
 **Pistas:**
-- Imagen Spark: `apache/spark:3.5.4-python3` (o `bitnami/spark:3.5`)
-- Imagen PostgreSQL: `postgres:15-alpine`
+- Imagen Spark: `apache/spark:3.5.4-python3` (la imagen `bitnami/spark` fue descontinuada en 2025, no usarla)
+- Imagen PostgreSQL: `postgres:16-alpine`
 - El Master de Spark usa el puerto 7077 para comunicacion y 8080 para la UI web
 - Los Workers necesitan saber la URL del Master para conectarse
 
