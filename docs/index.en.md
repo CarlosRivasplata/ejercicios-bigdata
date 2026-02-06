@@ -1,7 +1,7 @@
 # COMPLETE BIG DATA COURSE
 
 <div style="text-align: center; padding: 30px 0;">
-<img src="assets/todoeconometria_logo.png" alt="TodoEconometria" style="width: 350px; max-width: 80%;">
+<img src="../assets/todoeconometria_logo.png" alt="TodoEconometria" style="width: 350px; max-width: 80%;">
 <p style="font-size: 1.3em; font-style: italic; color: #888; margin-top: 15px;">
 "Without experience there is no knowledge"
 </p>
@@ -23,7 +23,7 @@
 <h3 style="color: #ff6b6b; margin-top: 0;">Global Seismic Observatory</h3>
 <p style="color: #ccc;">Real-time earthquakes from USGS API. Interactive map, magnitude filters, tsunami alerts.</p>
 <p style="margin-bottom: 0;">
-<a href="dashboards/dashboard_sismos_global.html" target="_blank" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: bold;">View Live</a>
+<a href="../dashboards/dashboard_sismos_global.html" target="_blank" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: bold;">View Live</a>
 </p>
 </div>
 
@@ -31,7 +31,7 @@
 <h3 style="color: #4facfe; margin-top: 0;">ISS Tracker</h3>
 <p style="color: #ccc;">Track the International Space Station in real time. Pass predictor over your city.</p>
 <p style="margin-bottom: 0;">
-<a href="dashboards/dashboard_iss_tracker.html" target="_blank" style="background: linear-gradient(135deg, #00f2fe, #4facfe); color: white; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: bold;">View Live</a>
+<a href="../dashboards/dashboard_iss_tracker.html" target="_blank" style="background: linear-gradient(135deg, #00f2fe, #4facfe); color: white; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: bold;">View Live</a>
 </p>
 </div>
 
@@ -257,25 +257,25 @@ All of these dashboards were created during the course:
 <div style="background: #1e1e2e; border-radius: 10px; padding: 15px; text-align: center;">
 <strong style="color: #f39c12;">ARIMA PRO</strong><br>
 <span style="color: #888; font-size: 0.9em;">Bloomberg-style time series</span><br>
-<a href="dashboards/dashboard_arima_pro.html" target="_blank">View Dashboard</a>
+<a href="../dashboards/dashboard_arima_pro.html" target="_blank">View Dashboard</a>
 </div>
 
 <div style="background: #1e1e2e; border-radius: 10px; padding: 15px; text-align: center;">
 <strong style="color: #3498db;">PCA + K-Means</strong><br>
 <span style="color: #888; font-size: 0.9em;">Clustering and dimensionality reduction</span><br>
-<a href="dashboards/02_pca_iris_dashboard.html" target="_blank">View Dashboard</a>
+<a href="../dashboards/02_pca_iris_dashboard.html" target="_blank">View Dashboard</a>
 </div>
 
 <div style="background: #1e1e2e; border-radius: 10px; padding: 15px; text-align: center;">
 <strong style="color: #2ecc71;">Transfer Learning</strong><br>
 <span style="color: #888; font-size: 0.9em;">Flower classification with CNN</span><br>
-<a href="dashboards/dashboard_flores.html" target="_blank">View Dashboard</a>
+<a href="../dashboards/dashboard_flores.html" target="_blank">View Dashboard</a>
 </div>
 
 <div style="background: #1e1e2e; border-radius: 10px; padding: 15px; text-align: center;">
 <strong style="color: #9b59b6;">Panel Data QoG</strong><br>
 <span style="color: #888; font-size: 0.9em;">Spark + PostgreSQL + ML</span><br>
-<a href="dashboards/06_analisis_panel_qog.html" target="_blank">View Dashboard</a>
+<a href="../dashboards/06_analisis_panel_qog.html" target="_blank">View Dashboard</a>
 </div>
 
 </div>
@@ -376,7 +376,7 @@ This repository is open source. If you find errors or want to contribute:
 <div style="text-align: center; padding: 40px 0; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 15px; margin: 30px 0;">
 <h2 style="margin-top: 0;">Your Big Data Career Starts Here</h2>
 <p style="color: #888; margin-bottom: 25px;">230 hours of content, 30+ technologies, real-time dashboards</p>
-<a href="ejercicios/" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-size: 1.1em; font-weight: bold;">Start Now</a>
+<a href="../ejercicios/" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-size: 1.1em; font-weight: bold;">Start Now</a>
 </div>
 
 ---
