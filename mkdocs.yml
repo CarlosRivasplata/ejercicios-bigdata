@@ -176,8 +176,11 @@ extra:
       link: https://twitter.com/todoeconometria
       name: Twitter / X
     - icon: fontawesome/brands/facebook
-      link: https://www.facebook.com/DataScienceTodoEconometria
-      name: Facebook
+      link: https://www.facebook.com/groups/seriestemporales
+      name: FB Series Temporales
+    - icon: fontawesome/brands/facebook
+      link: https://www.facebook.com/groups/econometriaMCO
+      name: FB Econometria MCO
     - icon: fontawesome/brands/instagram
       link: https://www.instagram.com/todoeconometria/
       name: Instagram
