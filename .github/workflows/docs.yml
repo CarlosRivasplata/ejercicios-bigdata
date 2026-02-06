@@ -27,13 +27,21 @@ jobs:
         with:
           python-version: 3.11
 
-      - name: Cache dependencies
+      - name: Cache pip dependencies
         uses: actions/cache@v3
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('requirements-docs.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
+
+      - name: Cache MkDocs artifacts
+        uses: actions/cache@v3
+        with:
+          path: .cache
+          key: mkdocs-${{ hashFiles('docs/**', 'mkdocs.yml') }}
+          restore-keys: |
+            mkdocs-
 
       - name: Install dependencies
         run: |

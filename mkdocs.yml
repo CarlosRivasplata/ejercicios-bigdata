@@ -9,6 +9,7 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
+  custom_dir: docs/overrides
   language: es
   palette:
     # Palette toggle for light mode
@@ -82,9 +83,26 @@ theme:
     code: Roboto Mono
 
 plugins:
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      languages:
+        - locale: es
+          default: true
+          name: Espanol
+          build: true
+        - locale: en
+          name: English
+          build: true
+          site_name: "Big Data with Python - From Zero to Production"
+          site_description: "Complete educational repository for mastering Big Data with Python, from basic concepts to production"
   - search:
-      lang: es
+      lang:
+        - es
+        - en
       separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - social
   - minify:
       minify_html: true
       minify_js: true
@@ -137,6 +155,13 @@ markdown_extensions:
   - pymdownx.tilde
 
 extra:
+  alternate:
+    - name: Espanol
+      link: /ejercicios-bigdata/
+      lang: es
+    - name: English
+      link: /ejercicios-bigdata/en/
+      lang: en
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/TodoEconometria
@@ -149,6 +174,8 @@ extra:
       name: Web TodoEconometria
 
   analytics:
+    provider: google
+    property: G-9X884R0HXK
     feedback:
       title: Es util esta pagina?
       ratings:
@@ -169,7 +196,7 @@ extra_css:
 
 extra_javascript:
   - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:

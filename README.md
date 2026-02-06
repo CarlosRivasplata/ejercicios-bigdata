@@ -12,6 +12,7 @@
 [![GitHub Forks](https://img.shields.io/github/forks/TodoEconometria/ejercicios-bigdata?style=for-the-badge&logo=github)](https://github.com/TodoEconometria/ejercicios-bigdata/network/members)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![Deploy](https://github.com/TodoEconometria/ejercicios-bigdata/actions/workflows/docs.yml/badge.svg)](https://github.com/TodoEconometria/ejercicios-bigdata/actions/workflows/docs.yml)
 
 ### [**Ver Sitio Web del Curso**](https://todoeconometria.github.io/ejercicios-bigdata/)
 
@@ -227,9 +228,30 @@ ejercicios-bigdata/
 
 ---
 
+---
+
+## English
+
+> **This course is available in English!** Visit the [English version of the website](https://todoeconometria.github.io/ejercicios-bigdata/en/).
+
+A **complete, free, open-source** Big Data course covering 230 hours of hands-on content across 9 modules:
+
+- **Databases:** SQLite, PostgreSQL, Oracle, DynamoDB
+- **ETL & Processing:** Pandas, Dask, Apache Spark
+- **Streaming:** Apache Kafka (KRaft mode), Spark Structured Streaming
+- **Cloud:** LocalStack (free AWS simulation), Terraform, Lambda
+- **ML & AI:** PCA, K-Means, TensorFlow, ARIMA/SARIMA, Transfer Learning
+- **NLP:** NLTK, TF-IDF, Sentiment Analysis, Jaccard Similarity
+- **Econometrics:** Panel Data, Fixed/Random Effects, Hausman Test
+- **Infrastructure:** Docker, Docker Compose, Spark Clusters
+
+**Live demos:** [Global Earthquake Observatory](https://todoeconometria.github.io/ejercicios-bigdata/dashboards/dashboard_sismos_global.html) | [ISS Tracker](https://todoeconometria.github.io/ejercicios-bigdata/dashboards/dashboard_iss_tracker.html)
+
+---
+
 <div align="center">
 
-**© 2026 Juan Marcelo Gutierrez Miranda** — Material Educativo Abierto (MIT License)
+**© 2026 Juan Marcelo Gutierrez Miranda** — Open Educational Material (MIT License)
 
 **Hash ID:** 4e8d9b1a5f6e7c3d2b1a0f9e8d7c6b5a4f3e2d1c0b9a8f7e6d5c4b3a2f1e0d9c
 
