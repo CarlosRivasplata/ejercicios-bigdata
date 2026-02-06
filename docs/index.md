@@ -340,7 +340,7 @@ Este repositorio es open source. Si encuentras errores o quieres contribuir:
 <div style="text-align: center; padding: 40px 0; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius: 15px; margin: 30px 0;">
 <h2 style="margin-top: 0;">Tu Carrera en Big Data Empieza Aqui</h2>
 <p style="color: #888; margin-bottom: 25px;">230 horas de contenido, 30+ tecnologias, dashboards en tiempo real</p>
-<a href="ejercicios/index.md" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-size: 1.1em; font-weight: bold;">Comenzar Ahora</a>
+<a href="ejercicios/" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-size: 1.1em; font-weight: bold;">Comenzar Ahora</a>
 </div>
 
 ---
