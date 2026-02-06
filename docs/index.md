@@ -53,7 +53,7 @@ Estos dashboards se actualizan automaticamente con datos reales de APIs publicas
 </div>
 
 <div style="background: #1e1e2e; border-radius: 10px; padding: 20px;">
-<div style="font-size: 2.5em; font-weight: bold; color: #3498db;">7</div>
+<div style="font-size: 2.5em; font-weight: bold; color: #3498db;">9</div>
 <div style="color: #888;">Modulos completos</div>
 </div>
 
@@ -167,48 +167,75 @@ Desde tu primera query SELECT hasta procedimientos almacenados en Oracle. Aprend
 
 ---
 
-### Modulo 2: Big Data y ETL
-> Pipelines ETL, Dask, Parquet, QoG Dataset
+### Modulo 2: Limpieza de Datos y ETL
+> Pipeline ETL profesional, QoG Dataset, PostgreSQL
 
-Construye pipelines profesionales que procesan millones de registros. Trabaja con el dataset Quality of Government (1,990 variables, 194 paises).
+Construye un pipeline ETL modular que procesa el dataset Quality of Government (1,289 variables, 194+ paises). Limpieza, transformacion y carga en PostgreSQL.
 
-[Ver Ejercicios](ejercicios/index.md#modulo-2-big-data-y-etl){ .md-button }
-
----
-
-### Modulo 3: Analitica Avanzada
-> Machine Learning, Deep Learning, NLP, Series Temporales
-
-PCA, K-Means, Transfer Learning con TensorFlow, ARIMA/SARIMA, analisis de sentimiento. Todo con datasets reales.
-
-[Ver Ejercicios](ejercicios/index.md#modulo-3-analitica-avanzada){ .md-button }
+[Ver Ejercicios](ejercicios/index.md#modulo-2-limpieza-de-datos-y-etl){ .md-button }
 
 ---
 
-### Modulo 4: Econometria de Panel
+### Modulo 3: Procesamiento Distribuido
+> Dask, Parquet, Cluster Local
+
+Procesa datasets grandes sin necesidad de un cluster. Dask te permite escalar pandas a datos que no caben en memoria, usando Parquet y paralelismo local.
+
+[Ver Ejercicios](ejercicios/index.md#modulo-3-procesamiento-distribuido){ .md-button }
+
+---
+
+### Modulo 4: Machine Learning
+> PCA, K-Means, Transfer Learning, ARIMA/SARIMA
+
+Reduccion de dimensionalidad, clustering, clasificacion de imagenes con TensorFlow y series temporales con metodologia Box-Jenkins. Todo con datasets reales.
+
+[Ver Ejercicios](ejercicios/index.md#modulo-4-machine-learning){ .md-button }
+
+---
+
+### Modulo 5: NLP y Text Mining
+> NLTK, TF-IDF, Jaccard, Sentiment Analysis
+
+Tokenizacion, limpieza de texto, similitud entre documentos, analisis de sentimiento y vectorizacion con TF-IDF.
+
+[Ver Ejercicios](ejercicios/index.md#modulo-5-nlp-y-text-mining){ .md-button }
+
+---
+
+### Modulo 6: Analisis de Datos de Panel
 > Efectos Fijos, Efectos Aleatorios, Hausman Test
 
 Analiza datos longitudinales (pais x ano). Replica estudios academicos reales sobre leyes de armas y mortalidad de trafico.
 
-[Ver Ejercicios](ejercicios/index.md#modulo-4-econometria-de-panel){ .md-button }
+[Ver Ejercicios](ejercicios/index.md#modulo-6-analisis-de-datos-de-panel){ .md-button }
 
 ---
 
-### Modulo 5: Infraestructura Big Data
+### Modulo 7: Infraestructura Big Data
 > Docker, Docker Compose, Apache Spark, Cluster Computing
 
 Entiende como se construye la infraestructura. Contenedores, orquestacion con Docker Compose, clusters Spark con arquitectura Master-Worker. La base para el Trabajo Final.
 
-[Ver Ejercicios](ejercicios/index.md#modulo-5-infraestructura-big-data){ .md-button }
+[Ver Ejercicios](ejercicios/index.md#modulo-7-infraestructura-big-data){ .md-button }
 
 ---
 
-### Modulo 6: Streaming e Infraestructura Cloud
-> Kafka, Spark Streaming, LocalStack, Terraform, AWS
+### Modulo 8: Streaming con Kafka
+> Apache Kafka, KRaft, Spark Structured Streaming
 
-El modulo mas avanzado. Streaming en tiempo real con Kafka, simulacion de AWS con LocalStack, Infraestructura como Codigo con Terraform.
+Streaming en tiempo real con Kafka (modo KRaft, sin ZooKeeper). Productores, consumidores, Spark Structured Streaming y sistema de alertas sismicas.
 
-[Ver Ejercicios](ejercicios/index.md#modulo-6-streaming-e-infraestructura-cloud){ .md-button }
+[Ver Ejercicios](ejercicios/index.md#modulo-8-streaming-con-kafka){ .md-button }
+
+---
+
+### Modulo 9: Cloud con LocalStack
+> LocalStack, Terraform, AWS (S3, Lambda, DynamoDB)
+
+Simula AWS en tu maquina sin costos. Infraestructura como Codigo con Terraform, funciones Lambda serverless y arquitectura Data Lake.
+
+[Ver Ejercicios](ejercicios/index.md#modulo-9-cloud-con-localstack){ .md-button }
 
 ---
 

@@ -17,39 +17,54 @@ Lista completa de todos los ejercicios disponibles en el curso.
 | 3.1 | [Oracle HR](05-oracle-hr.md) | Oracle Database | Avanzado | Disponible |
 | 5.1 | [Analisis Excel/Python](06-analisis-excel-python.md) | Pandas + Excel | Basico | Disponible |
 
-### Modulo 2: Big Data y ETL
+### Modulo 2: Limpieza de Datos y ETL
 
 | # | Ejercicio | Tecnologia | Nivel | Estado |
 |---|-----------|------------|-------|--------|
 | 02 | [Pipeline ETL QoG](02-pipeline-etl-qog.md) | PostgreSQL + Pandas | Avanzado | Disponible |
-| 03 | [Procesamiento Distribuido](03-procesamiento-distribuido.md) | Dask + Parquet | Intermedio | Disponible |
 
-### Modulo 3: Analitica Avanzada
+### Modulo 3: Procesamiento Distribuido
 
 | # | Ejercicio | Tecnologia | Nivel | Estado |
 |---|-----------|------------|-------|--------|
-| 04 | [Machine Learning](04-machine-learning.md) | Scikit-Learn, PCA, K-Means | Avanzado | Disponible |
-| 04.2 | [Transfer Learning Flores](04-machine-learning.md#ejercicio-42-transfer-learning-clasificacion-de-flores) | TensorFlow, MobileNetV2 | Avanzado | Disponible |
-| ARIMA | [Series Temporales](07-series-temporales-arima.md) | ARIMA/SARIMA, Box-Jenkins | Avanzado | Disponible |
-| 05 | [NLP y Text Mining](05-nlp-mining.md) | NLTK, TF-IDF, Jaccard | Avanzado | Disponible |
+| 03 | [Procesamiento Distribuido con Dask](03-procesamiento-distribuido.md) | Dask + Parquet | Intermedio | Disponible |
 
-### Modulo 4: Econometria de Panel
+### Modulo 4: Machine Learning
+
+| # | Ejercicio | Tecnologia | Nivel | Estado |
+|---|-----------|------------|-------|--------|
+| 04 | [Machine Learning (PCA, K-Means)](04-machine-learning.md) | Scikit-Learn, PCA, K-Means | Avanzado | Disponible |
+| 04.2 | [Transfer Learning Flores](04-machine-learning.md#ejercicio-42-transfer-learning-clasificacion-de-flores) | TensorFlow, MobileNetV2 | Avanzado | Disponible |
+| ARIMA | [Series Temporales ARIMA/SARIMA](07-series-temporales-arima.md) | statsmodels, Box-Jenkins | Avanzado | Disponible |
+
+### Modulo 5: NLP y Text Mining
+
+| # | Ejercicio | Tecnologia | Nivel | Estado |
+|---|-----------|------------|-------|--------|
+| 05 | [NLP y Text Mining](05-nlp-mining.md) | NLTK, TF-IDF, Jaccard, Sentimiento | Avanzado | Disponible |
+
+### Modulo 6: Analisis de Datos de Panel
 
 | # | Ejercicio | Tecnologia | Nivel | Estado |
 |---|-----------|------------|-------|--------|
 | 06 | [Analisis de Datos de Panel](08-panel-data.md) | linearmodels, Panel OLS, Altair | Avanzado | Disponible |
 
-### Modulo 5: Infraestructura Big Data
+### Modulo 7: Infraestructura Big Data
 
 | # | Ejercicio | Tecnologia | Nivel | Estado |
 |---|-----------|------------|-------|--------|
 | 07 | [Infraestructura Big Data](07-infraestructura-bigdata.md) | Docker Compose, Apache Spark | Intermedio-Avanzado | Disponible |
 
-### Modulo 6: Streaming e Infraestructura Cloud
+### Modulo 8: Streaming con Kafka
 
 | # | Ejercicio | Tecnologia | Nivel | Estado |
 |---|-----------|------------|-------|--------|
-| 08 | [Streaming con Kafka](08-streaming-kafka.md) | Apache Kafka, Spark Streaming | Avanzado | Disponible |
+| 08 | [Streaming con Kafka](08-streaming-kafka.md) | Apache Kafka, Spark Streaming, KRaft | Avanzado | Disponible |
+
+### Modulo 9: Cloud con LocalStack
+
+| # | Ejercicio | Tecnologia | Nivel | Estado |
+|---|-----------|------------|-------|--------|
 | 09 | [Cloud con LocalStack](09-cloud-localstack.md) | LocalStack, Terraform, AWS | Avanzado | Disponible |
 
 ### Trabajo Final
@@ -168,7 +183,7 @@ Lista completa de todos los ejercicios disponibles en el curso.
 
 ---
 
-## MODULO 2: Big Data y ETL
+## MODULO 2: Limpieza de Datos y ETL
 
 ### [Pipeline ETL Profesional - Quality of Government](02-pipeline-etl-qog.md)
 
@@ -188,6 +203,8 @@ Lista completa de todos los ejercicios disponibles en el curso.
 
 ---
 
+## MODULO 3: Procesamiento Distribuido
+
 ### [Procesamiento Distribuido con Dask](03-procesamiento-distribuido.md)
 
 !!! info "Detalles"
@@ -205,7 +222,7 @@ Lista completa de todos los ejercicios disponibles en el curso.
 
 ---
 
-## MODULO 3: Analitica Avanzada
+## MODULO 4: Machine Learning
 
 ### [Machine Learning en Big Data](04-machine-learning.md)
 
@@ -261,6 +278,10 @@ Lista completa de todos los ejercicios disponibles en el curso.
 
 ---
 
+---
+
+## MODULO 5: NLP y Text Mining
+
 ### [NLP y Text Mining](05-nlp-mining.md)
 
 !!! info "Detalles"
@@ -279,7 +300,7 @@ Lista completa de todos los ejercicios disponibles en el curso.
 
 ---
 
-## MODULO 4: Econometria de Panel
+## MODULO 6: Analisis de Datos de Panel
 
 ### [Analisis de Datos de Panel](08-panel-data.md)
 
@@ -300,7 +321,7 @@ Lista completa de todos los ejercicios disponibles en el curso.
 
 ---
 
-## MODULO 5: Infraestructura Big Data
+## MODULO 7: Infraestructura Big Data
 
 ### [Infraestructura Big Data: Docker y Spark](07-infraestructura-bigdata.md)
 
@@ -322,7 +343,7 @@ Lista completa de todos los ejercicios disponibles en el curso.
 
 ---
 
-## MODULO 6: Streaming e Infraestructura Cloud
+## MODULO 8: Streaming con Kafka
 
 ### [Streaming con Apache Kafka](08-streaming-kafka.md)
 
@@ -342,6 +363,8 @@ Lista completa de todos los ejercicios disponibles en el curso.
 [Ver Ejercicio Completo](08-streaming-kafka.md){ .md-button }
 
 ---
+
+## MODULO 9: Cloud con LocalStack
 
 ### [Cloud con LocalStack y Terraform](09-cloud-localstack.md)
 

@@ -198,19 +198,22 @@ nav:
       - '2.3 - Migracion SQLite a PostgreSQL': ejercicios/04-migracion-sqlite-postgresql.md
       - '3.1 - Oracle HR': ejercicios/05-oracle-hr.md
       - '5.1 - Analisis Excel/Python': ejercicios/06-analisis-excel-python.md
-    - 'Modulo 2: Big Data y ETL':
+    - 'Modulo 2: Limpieza de Datos y ETL':
       - 'Pipeline ETL QoG': ejercicios/02-pipeline-etl-qog.md
-      - 'Procesamiento Distribuido': ejercicios/03-procesamiento-distribuido.md
-    - 'Modulo 3: Analitica Avanzada':
-      - 'Machine Learning': ejercicios/04-machine-learning.md
+    - 'Modulo 3: Procesamiento Distribuido':
+      - 'Procesamiento con Dask': ejercicios/03-procesamiento-distribuido.md
+    - 'Modulo 4: Machine Learning':
+      - 'PCA, K-Means y Transfer Learning': ejercicios/04-machine-learning.md
       - 'Series Temporales ARIMA': ejercicios/07-series-temporales-arima.md
+    - 'Modulo 5: NLP y Text Mining':
       - 'NLP y Text Mining': ejercicios/05-nlp-mining.md
-    - 'Modulo 4: Econometria de Panel':
-      - 'Analisis de Datos de Panel': ejercicios/08-panel-data.md
-    - 'Modulo 5: Infraestructura Big Data':
+    - 'Modulo 6: Analisis de Datos de Panel':
+      - 'Datos de Panel': ejercicios/08-panel-data.md
+    - 'Modulo 7: Infraestructura Big Data':
       - 'Docker Compose y Cluster Spark': ejercicios/07-infraestructura-bigdata.md
-    - 'Modulo 6: Streaming e Infraestructura Cloud':
+    - 'Modulo 8: Streaming con Kafka':
       - 'Streaming con Kafka': ejercicios/08-streaming-kafka.md
+    - 'Modulo 9: Cloud con LocalStack':
       - 'Cloud con LocalStack': ejercicios/09-cloud-localstack.md
     - 'Trabajo Final':
       - 'Enunciado y Plantilla': ejercicios/06-trabajo-final-capstone.md
