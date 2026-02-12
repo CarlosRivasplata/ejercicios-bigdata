@@ -10,13 +10,13 @@ hide:
 Tabla de posiciones del curso Big Data con Python
 </p>
 <p style="color: #666; font-size: 0.9em;">
-Ultima actualizacion: 2026-02-12 22:46 | Evaluacion automatica del curso
+Ultima actualizacion: 2026-02-12 23:12 | Evaluacion automatica del curso
 </p>
 </div>
 
 ---
 
-## Estadisticas del Curso
+<h2 style="border: none;">Estadisticas del Curso</h2>
 
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 30px 0; text-align: center;">
@@ -46,7 +46,7 @@ Ultima actualizacion: 2026-02-12 22:46 | Evaluacion automatica del curso
 
 ---
 
-## Podio
+<h2 style="border: none;">Podio</h2>
 
 <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin: 30px 0; text-align: center;">
 <div style="order: 2; margin-top: 0;">
@@ -79,7 +79,7 @@ Ultima actualizacion: 2026-02-12 22:46 | Evaluacion automatica del curso
 
 ---
 
-## Ranking Completo
+<h2 style="border: none;">Ranking Completo</h2>
 
 
 | Pos | Estudiante | Nota | Estado | Proyecto | Fork |
@@ -87,26 +87,11 @@ Ultima actualizacion: 2026-02-12 22:46 | Evaluacion automatica del curso
 | &#129351; | @katitto | **8.7** | &#11088; Destacado | `almache_katherine` | [Ver](https://github.com/katitto/ejercicios-bigdata){target="_blank"} |
 | &#129352; | @aurorafezu | **8.2** | &#11088; Destacado | `fernandez_aurora` | [Ver](https://github.com/aurorafezu/ejercicios-bigdata){target="_blank"} |
 | &#129353; | @luuuuru | **7.0** | &#9989; Aprobado | `camacho-lucia` | [Ver](https://github.com/luuuuru/ejercicios-bigdata){target="_blank"} |
-| -- | @7rodriguezandres-design | -- | &#9203; Pendiente | -- | [Ver](https://github.com/7rodriguezandres-design/ejercicios-bigdata){target="_blank"} |
-| -- | @alxz0212 | -- | &#9203; Pendiente | -- | [Ver](https://github.com/alxz0212/ejercicios-bigdata){target="_blank"} |
-| -- | @camilogrey | -- | &#9203; Pendiente | -- | [Ver](https://github.com/camilogrey/ejercicios-bigdata){target="_blank"} |
-| -- | @charly-developer | -- | &#9203; Pendiente | -- | [Ver](https://github.com/charly-developer/proyectofinal-carlosmalpica){target="_blank"} |
-| -- | @correosnodeseados763-pixel | -- | &#9203; Pendiente | -- | [Ver](https://github.com/correosnodeseados763-pixel/ejercicios-bigdata){target="_blank"} |
-| -- | @dalexismen1 | -- | &#9203; Pendiente | -- | [Ver](https://github.com/dalexismen1/ejercicios-bigdata){target="_blank"} |
-| -- | @fernandoramostrevi-ctrl | -- | &#9203; Pendiente | -- | [Ver](https://github.com/fernandoramostrevi-ctrl/ejercicios-bigdata){target="_blank"} |
-| -- | @garciaanyer2-ai | -- | &#9203; Pendiente | -- | [Ver](https://github.com/garciaanyer2-ai/ejercicios-bigdata){target="_blank"} |
-| -- | @IM-Dev0705 | -- | &#9203; Pendiente | -- | [Ver](https://github.com/IM-Dev0705/ejercicios-bigdata){target="_blank"} |
-| -- | @ismaelberruecomendez | -- | &#9203; Pendiente | -- | [Ver](https://github.com/ismaelberruecomendez/proyectofinal_IsmaelEduardoBerrueco){target="_blank"} |
-| -- | @jaaafarr | -- | &#9203; Pendiente | -- | [Ver](https://github.com/jaaafarr/ejercicios-bigdata){target="_blank"} |
-| -- | @miguelindustriales2015-lgtm | -- | &#9203; Pendiente | -- | [Ver](https://github.com/miguelindustriales2015-lgtm/ejercicios-bigdata){target="_blank"} |
-| -- | @mishellebe-glitch | -- | &#9203; Pendiente | -- | [Ver](https://github.com/mishellebe-glitch/ejercicios-bigdata){target="_blank"} |
-| -- | @NacheTyson | -- | &#9203; Pendiente | -- | [Ver](https://github.com/NacheTyson/ejercicios-bigdata){target="_blank"} |
-| -- | @yolmargh | -- | &#9203; Pendiente | -- | [Ver](https://github.com/yolmargh/ejercicios-bigdata){target="_blank"} |
 
 
 ---
 
-## Distribucion de Notas
+<h2 style="border: none;">Distribucion de Notas</h2>
 
 <div style="margin: 20px 0;">
 <div style="display: flex; align-items: center; margin: 8px 0;">
@@ -136,7 +121,7 @@ Ultima actualizacion: 2026-02-12 22:46 | Evaluacion automatica del curso
 
 <p style="text-align: center; color: #555; font-size: 0.85em; margin-top: 40px;">
 El ranking se actualiza automaticamente con cada evaluacion. Entrega tu trabajo para aparecer!<br>
-<em>Generado por: evaluar v3.0 | 2026-02-12 22:46</em>
+<em>Generado por: evaluar v3.0 | 2026-02-12 23:12</em>
 </p>
 
 ---
