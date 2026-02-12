@@ -219,6 +219,7 @@ extra_javascript:
 
 nav:
   - Home: index.md
+  - Ranking: ranking.md
 
   - Guia de Inicio:
     - guia-inicio/index.md
