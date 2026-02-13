@@ -52,135 +52,36 @@ hide:
   transform: translateY(-5px);
   box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
-@property --glow-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
 .logo-glow-wrap {
   display: inline-block;
   position: relative;
-  border-radius: 18px;
   margin-bottom: 12px;
-}
-/* Capa 1: tira LED con cola de colores + punta electrica */
-.logo-glow-wrap::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 20px;
-  padding: 3px;
-  background: conic-gradient(from var(--glow-angle),
-    transparent 0deg,
-    transparent 210deg,
-    #a51d4e15 230deg,
-    #a51d4e40 250deg,
-    #a51d4e 270deg,
-    #3470bc 295deg,
-    #2d8a56 318deg,
-    #f4a233 336deg,
-    #e63946 348deg,
-    #ff6b6b 353deg,
-    #00e5ff 357deg,
-    #ffffff 359deg,
-    transparent 360deg);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: logo-rotate 3s linear infinite,
-             logo-beat 1.5s ease-in-out infinite,
-             logo-spark 7.3s ease-in-out infinite;
-}
-/* Capa 2: halo electrico difuminado en la punta */
-.logo-glow-wrap::after {
-  content: '';
-  position: absolute;
-  inset: -7px;
-  border-radius: 24px;
-  padding: 7px;
-  background: conic-gradient(from var(--glow-angle),
-    transparent 0deg,
-    transparent 335deg,
-    #00e5ff20 345deg,
-    #00e5ff50 353deg,
-    #ffffff60 357deg,
-    #00e5ff30 359deg,
-    transparent 360deg);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: logo-rotate 3s linear infinite,
-             logo-beat 1.5s ease-in-out infinite,
-             logo-spark-halo 7.3s ease-in-out infinite;
 }
 .logo-glow-wrap img {
   display: block;
   width: 200px;
   height: auto;
   border-radius: 15px;
-  position: relative;
-  z-index: 1;
 }
-@keyframes logo-rotate {
-  to { --glow-angle: 360deg; }
-}
-/* Latido estilo Pulse - doble golpe como corazon */
-@keyframes logo-beat {
-  0%, 100% { opacity: 1; }
-  15% { opacity: 0.55; }
-  30% { opacity: 1; }
-  45% { opacity: 0.55; }
-  60% { opacity: 1; }
-}
-/* Chispas electricas - picos impredecibles (7.3s ciclo, no multiplo de 3s) */
-@keyframes logo-spark {
-  0%, 100% { filter: blur(1px) brightness(1); }
-  /* Spike 1 - rapido */
-  11.5% { filter: blur(1px) brightness(1); }
-  12%   { filter: blur(0.3px) brightness(2.8); }
-  13%   { filter: blur(1px) brightness(1); }
-  /* Spike 2 - fuerte */
-  36.5% { filter: blur(1px) brightness(1); }
-  37%   { filter: blur(0px) brightness(3.5); }
-  38%   { filter: blur(1px) brightness(1); }
-  /* Spike 3 - medio */
-  67%   { filter: blur(1px) brightness(1); }
-  68%   { filter: blur(0.3px) brightness(2.5); }
-  69%   { filter: blur(1px) brightness(1); }
-  /* Spike 4 - DOBLE chispa (arco electrico) */
-  87.5% { filter: blur(1px) brightness(1); }
-  88%   { filter: blur(0px) brightness(3); }
-  88.7% { filter: blur(0.5px) brightness(1.5); }
-  89.3% { filter: blur(0px) brightness(2.5); }
-  90%   { filter: blur(1px) brightness(1); }
-}
-/* Chispas del halo - mismas posiciones, mas dramaticas */
-@keyframes logo-spark-halo {
-  0%, 100% { filter: blur(6px) brightness(1); }
-  11.5% { filter: blur(6px) brightness(1); }
-  12%   { filter: blur(3px) brightness(4); }
-  13%   { filter: blur(6px) brightness(1); }
-  36.5% { filter: blur(6px) brightness(1); }
-  37%   { filter: blur(2px) brightness(5); }
-  38%   { filter: blur(6px) brightness(1); }
-  67%   { filter: blur(6px) brightness(1); }
-  68%   { filter: blur(3px) brightness(3.5); }
-  69%   { filter: blur(6px) brightness(1); }
-  87.5% { filter: blur(6px) brightness(1); }
-  88%   { filter: blur(2px) brightness(4.5); }
-  88.7% { filter: blur(4px) brightness(2); }
-  89.3% { filter: blur(2px) brightness(3.5); }
-  90%   { filter: blur(6px) brightness(1); }
+/* SVG ECG - linea de vida bajo el logo */
+.ecg-svg {
+  position: absolute;
+  bottom: -4px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: 32px;
+  z-index: 2;
+  pointer-events: none;
 }
 </style>
 
 <div style="text-align: center; padding: 10px 0;">
-<div class="logo-glow-wrap"><img src="../assets/todoeconometria_logo.png" alt="TodoEconometria"></div>
+<div class="logo-glow-wrap"><img src="../assets/todoeconometria_logo.png" alt="TodoEconometria"><svg class="ecg-svg" viewBox="-5 -2 210 32"><defs><filter id="ecg-glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><linearGradient id="ecg-colors" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="200" y2="0"><stop offset="0%" stop-color="#a51d4e"/><stop offset="20%" stop-color="#e63946"/><stop offset="40%" stop-color="#f4a233"/><stop offset="60%" stop-color="#2d8a56"/><stop offset="80%" stop-color="#3470bc"/><stop offset="100%" stop-color="#a51d4e"/></linearGradient></defs><path d="M -200,20 H -50 l 5,-3 l 5,3 l 5,0 l 2,3 l 2,-18 l 2,20 l 2,-5 l 5,0 l 4,-4 l 5,4 H 0 H 150 l 5,-3 l 5,3 l 5,0 l 2,3 l 2,-18 l 2,20 l 2,-5 l 5,0 l 4,-4 l 5,4 H 200 H 350 l 5,-3 l 5,3 l 5,0 l 2,3 l 2,-18 l 2,20 l 2,-5 l 5,0 l 4,-4 l 5,4 H 400" fill="none" stroke="url(#ecg-colors)" stroke-width="3" stroke-linecap="round" filter="url(#ecg-glow)" stroke-dasharray="90 642"><animate attributeName="stroke-dashoffset" from="0" to="-732" dur="3s" repeatCount="indefinite"/></path></svg></div>
 <p style="font-size: 1.1em; font-style: italic; color: #888;">
 Tabla de posiciones del curso Big Data con Python
 </p>
 <p style="color: #666; font-size: 0.9em;">
-Ultima actualizacion: 2026-02-13 00:43 | Evaluacion automatica del curso
+Ultima actualizacion: 2026-02-13 01:36 | Evaluacion automatica del curso
 </p>
 </div>
 
@@ -225,7 +126,7 @@ Ultima actualizacion: 2026-02-13 00:43 | Evaluacion automatica del curso
 
 <p style="text-align: center; color: #555; font-size: 0.85em; margin-top: 40px;">
 El ranking se actualiza automaticamente con cada evaluacion. Entrega tu trabajo para aparecer!<br>
-<em>Generado por: evaluar v3.0 | 2026-02-13 00:43</em>
+<em>Generado por: evaluar v3.0 | 2026-02-13 01:36</em>
 </p>
 
 ---
