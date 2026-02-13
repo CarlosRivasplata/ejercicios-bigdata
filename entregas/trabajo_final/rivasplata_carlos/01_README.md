@@ -4,6 +4,8 @@
 **Docente:** Juan Marcelo Gutiérrez  
 **Curso:** ESPECIALISTA EN BIG DATA
 
+**🚀 Ver Dashboard Interactivo:** [https://carlosrivasplata.github.io/ejercicios-bigdata/](https://carlosrivasplata.github.io/ejercicios-bigdata/)
+
 ---
 
 ## Tema de Investigación
