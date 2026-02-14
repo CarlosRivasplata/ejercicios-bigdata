@@ -70,6 +70,7 @@ He seleccionado los 5 países principales del Magreb debido a su relevancia geop
 ### Diagrama de Infraestructura (Docker)
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#ffffff', 'mainBkg': '#ffffff', 'nodeBorder': '#000000', 'lineColor': '#000000', 'fontFamily': 'arial', 'fontSize': '14px'}}}%%
 graph TD
     subgraph Host_Machine ["Tu Computadora (Host)"]
         CSV[("📂 Datos CSV (QoG)")]
@@ -92,39 +93,37 @@ graph TD
     CSV -.-> |Volumen /workspace/datos| Master
     Code -.-> |Volumen /workspace/src| Master
     
-    %% Flujo de Datos
-    Master --> |Asigna Tareas| Worker
-    Worker --> |Procesa Datos| Master
-    Master --> |Guarda Resultados| Output_Local
+    %% Flujo de Datos (Flechas gruesas)
+    Master ==> |Asigna Tareas| Worker
+    Worker ==> |Procesa Datos| Master
+    Master ==> |Guarda Resultados| Output_Local
     Master -.-> |"Conexión JDBC (Opcional)"| Postgres
 
-    %% Estilos
-    style Host_Machine fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style Docker_Environment fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
-    style Spark_Cluster fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
-    style Master fill:#ffcc80,stroke:#ef6c00
-    style Worker fill:#ffe0b2,stroke:#ef6c00
-    style Postgres fill:#b2dfdb,stroke:#00695c
+    %% Estilos Globales Profesionales
+    classDef default fill:#fff,stroke:#000,stroke-width:2px,color:#000;
+    classDef cluster fill:#fff,stroke:#000,stroke-width:2px,color:#000,stroke-dasharray: 5 5;
+    class Host_Machine,Docker_Environment,Spark_Cluster cluster;
 ```
 
 ### Diagrama de Flujo del Pipeline (ETL)
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#ffffff', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#ffffff', 'mainBkg': '#ffffff', 'nodeBorder': '#000000', 'lineColor': '#000000', 'fontFamily': 'arial', 'fontSize': '14px'}}}%%
 graph LR
     subgraph ETL_Process ["Pipeline de Datos (pipeline.py)"]
         direction LR
-        A[("📥 Carga Datos<br>(CSV QoG)")] --> B{"🌍 Filtrado<br>(Solo Magreb)"}
-        B --> C["🧹 Limpieza<br>(Nulos & Tipos)"]
-        C --> D["🧮 Transformación<br>(Variables Derivadas)"]
-        D --> E[("💾 Guardar<br>(Parquet)")]
-        D --> F["📊 Visualización<br>(Matplotlib/Seaborn)"]
-        F --> G[("🖼️ Exportar<br>(5 Gráficos PNG)")]
+        A[("📥 Carga Datos<br>(CSV QoG)")] ==> B{"🌍 Filtrado<br>(Solo Magreb)"}
+        B ==> C["🧹 Limpieza<br>(Nulos & Tipos)"]
+        C ==> D["🧮 Transformación<br>(Variables Derivadas)"]
+        D ==> E[("💾 Guardar<br>(Parquet)")]
+        D ==> F["📊 Visualización<br>(Matplotlib/Seaborn)"]
+        F ==> G[("🖼️ Exportar<br>(5 Gráficos PNG)")]
     end
     
-    style ETL_Process fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-    style A fill:#e1bee7,stroke:#4a148c
-    style E fill:#b2dfdb,stroke:#004d40
-    style G fill:#ffccbc,stroke:#bf360c
+    %% Estilos Globales Profesionales
+    classDef default fill:#fff,stroke:#000,stroke-width:2px,color:#000;
+    classDef cluster fill:#fff,stroke:#000,stroke-width:2px,color:#000,stroke-dasharray: 5 5;
+    class ETL_Process cluster;
 ```
 
 ---
