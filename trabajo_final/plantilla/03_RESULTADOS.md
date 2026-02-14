@@ -74,3 +74,37 @@ que Indonesia mantuvo una mejora gradual..."]
 - "QoG no tiene datos completos para todos los anios en algunas variables"
 - "5 paises no son suficientes para generalizar a toda una region"
 - "El clustering con pocas variables puede no capturar toda la complejidad"]
+
+---
+
+## 3.5 Dashboard interactivo (opcional pero recomendado)
+
+Si generaste un dashboard HTML interactivo (con Plotly, Bokeh, etc.), guardalo en tu carpeta
+para que aparezca automaticamente en el ranking del curso.
+
+**Donde ponerlo:**
+
+```
+tu_carpeta/
+├── outputs/
+│   └── dashboard/
+│       └── index.html      <-- Aqui (opcion recomendada)
+├── dashboard.html           <-- O aqui (en la raiz de tu carpeta)
+├── pipeline.py
+└── ...
+```
+
+**Como generarlo con Plotly (ejemplo):**
+
+```python
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+fig = make_subplots(rows=2, cols=1, subplot_titles=["Grafico 1", "Grafico 2"])
+# ... tus graficos ...
+fig.write_html("outputs/dashboard/index.html", include_plotlyjs=True)
+```
+
+El sistema detecta automaticamente archivos `.html` en tu entrega y los muestra
+en el ranking con un boton "Dashboard" para que cualquiera pueda ver tus resultados
+interactivos sin descargar nada.
