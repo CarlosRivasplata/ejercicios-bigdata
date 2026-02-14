@@ -97,7 +97,7 @@ graph TD
     Master ==> |Asigna Tareas| Worker
     Worker ==> |Procesa Datos| Master
     Master ==> |Guarda Resultados| Output_Local
-    Master -.-> |"Conexión JDBC (Opcional)"| Postgres
+    Master -.-> |"Conexión JDBC (Persistencia)"| Postgres
 
     %% Estilos Globales Profesionales
     classDef default fill:#fff,stroke:#000,stroke-width:2px,color:#000;
@@ -115,7 +115,7 @@ graph LR
         A[("📥 Carga Datos<br>(CSV QoG)")] ==> B{"🌍 Filtrado<br>(Solo Magreb)"}
         B ==> C["🧹 Limpieza<br>(Nulos & Tipos)"]
         C ==> D["🧮 Transformación<br>(Variables Derivadas)"]
-        D ==> E[("💾 Guardar<br>(Parquet)")]
+        D ==> E[("💾 Guardar<br>(Parquet + PostgreSQL)")]
         D ==> F["📊 Visualización<br>(Matplotlib/Seaborn)"]
         F ==> G[("🖼️ Exportar<br>(5 Gráficos PNG)")]
     end
@@ -132,6 +132,18 @@ graph LR
 
 Para reproducir este análisis:
 
-1.  Levantar la infraestructura: `docker compose up -d`
-2.  Ejecutar el pipeline completo: `docker compose exec spark-master /opt/spark/bin/spark-submit /workspace/pipeline.py`
-3.  Ver los resultados: Los gráficos generados se encontrarán en la carpeta `outputs/graficos`.
+1.  **Levantar la infraestructura:**
+    ```sh
+    docker compose up -d
+    ```
+2.  **Instalar dependencias:**
+    ```sh
+    docker compose exec -u 0 spark-master pip install --default-timeout=1000 -r /workspace/requirements.txt
+    ```
+3.  **Ejecutar el pipeline completo (con persistencia en DB):**
+    ```sh
+    docker compose exec -u 0 spark-master /opt/spark/bin/spark-submit --packages org.postgresql:postgresql:42.6.0 /workspace/pipeline.py
+    ```
+4.  **Ver los resultados:**
+    *   Gráficos en `outputs/graficos`.
+    *   Datos en PostgreSQL (Tabla `indicadores_magreb`).

@@ -46,7 +46,7 @@ extra:
 
 # Navegación con títulos profesionales y alineados
 nav:
-  - Resumen Ejecutivo: index.md
+  - Resumen Ejecutivo: 01_README.md
   - Arquitectura de Infraestructura: 02_INFRAESTRUCTURA.md
   - Análisis de Datos y Hallazgos: 03_RESULTADOS.md
   - Discusión Teórica y Preguntas: 05_RESPUESTAS.md

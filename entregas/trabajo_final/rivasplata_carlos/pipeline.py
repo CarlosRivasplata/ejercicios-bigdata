@@ -1,5 +1,5 @@
 # pipeline.py
-# Trabajo Final: Pipeline Completo (Descarga -> ETL Spark -> Análisis EDA/Visual)
+# Trabajo Final: Pipeline Completo (Descarga -> ETL Spark -> Análisis EDA/Visual -> Postgres)
 # Tema: Desarrollo Político-Económico en el Magreb: Autoritarismo vs Democracia
 # Autor: Carlos Rivasplata
 
@@ -65,7 +65,35 @@ def descargar_datos():
 # 2. ETL CON SPARK
 # ==========================================
 def crear_spark() -> SparkSession:
-    return SparkSession.builder.appName("QoG-Magreb-Pipeline").getOrCreate()
+    # Configuración para descargar el driver de Postgres automáticamente
+    return SparkSession.builder \
+        .appName("QoG-Magreb-Pipeline") \
+        .config("spark.jars.packages", "org.postgresql:postgresql:42.6.0") \
+        .getOrCreate()
+
+def guardar_en_postgres(df):
+    print("\n--- GUARDANDO EN POSTGRESQL ---")
+    # Configuración de conexión (coincide con docker-compose.yml y .env)
+    db_url = "jdbc:postgresql://postgres:5432/qogdb"
+    db_properties = {
+        "user": "qoguser",
+        "password": "qogpass",
+        "driver": "org.postgresql.Driver"
+    }
+    
+    try:
+        # Escribir el DataFrame final en la tabla 'indicadores_magreb'
+        # mode="overwrite" borra la tabla si existe y la crea de nuevo
+        df.write.jdbc(
+            url=db_url,
+            table="indicadores_magreb",
+            mode="overwrite",
+            properties=db_properties
+        )
+        print("✅ Datos guardados exitosamente en la tabla 'indicadores_magreb'")
+    except Exception as e:
+        print(f"❌ Error al guardar en Postgres: {e}")
+        print("   (Asegúrate de que el contenedor de Postgres esté corriendo y las credenciales sean correctas)")
 
 def run_etl():
     print("\n[PASO 2] Iniciando ETL con Spark...")
@@ -75,8 +103,6 @@ def run_etl():
     print(f"==> Leyendo CSV desde: {RUTA_CSV}")
     df = spark.read.option("header", True).option("inferSchema", True).csv(RUTA_CSV)
 
-    # Mapeo de variables clave con ALTERNATIVAS
-    # Si la principal no existe, buscamos la alternativa
     cols_config = [
         {"alias": "pais_iso",       "candidates": ["ccodealp", "ccode"], "type": StringType()},
         {"alias": "pais_nombre",    "candidates": ["cname", "cname_qog"], "type": StringType()},
@@ -101,17 +127,10 @@ def run_etl():
         
         if not found:
             print(f"⚠️ Variable '{item['alias']}' NO encontrada. Se llenará con NULL (tipo {item['type']}).")
-            # AQUÍ ESTÁ LA CORRECCIÓN: Casteamos el NULL al tipo correcto
             select_exprs.append(F.lit(None).cast(item["type"]).alias(item["alias"]))
 
     df_clean = df.select(*select_exprs)
 
-    # Filtrar Países (Magreb)
-    # Nota: Si pais_iso terminó siendo numérico (ccode), el filtro por strings fallará.
-    # Intentamos detectar si es string o no.
-    # Pero para simplificar, asumimos que si se encontró ccodealp es string.
-    
-    # Verificamos si pais_iso es string o double en el esquema actual
     iso_type = [f.dataType for f in df_clean.schema.fields if f.name == "pais_iso"][0]
     
     if isinstance(iso_type, StringType):
@@ -120,8 +139,6 @@ def run_etl():
         print("⚠️ 'pais_iso' parece ser numérico. No se puede filtrar por códigos ISO-3 (MAR, DZA...).")
         print("   Se omitirá el filtro de países para evitar errores (se procesarán todos).")
 
-    # Variables Derivadas
-    # 1. Categoría de Régimen
     df_clean = df_clean.withColumn(
         "categoria_regimen",
         F.when(F.col("democracia") > 0.7, "Democracia")
@@ -129,8 +146,6 @@ def run_etl():
          .otherwise("Autoritario")
     )
 
-    # 2. Índice de Desarrollo Institucional (PIB ajustado por corrupción)
-    # Normalizamos PIB (log) * (Corrupción/100)
     df_clean = df_clean.withColumn(
         "indice_inst",
         (F.log(F.col("pib_pc")) * (F.col("corrupcion") / 100))
@@ -139,6 +154,9 @@ def run_etl():
     # Guardar Parquet
     print(f"==> Guardando resultado ETL en: {RUTA_PARQUET}")
     df_clean.write.mode("overwrite").parquet(RUTA_PARQUET)
+    
+    # Guardar en Postgres (NUEVO)
+    guardar_en_postgres(df_clean)
     
     print("==> Preview de datos procesados:")
     df_clean.show()

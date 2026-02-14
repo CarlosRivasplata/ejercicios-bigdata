@@ -71,7 +71,7 @@ graph TD
     Master ==> |Asigna Tareas| Worker
     Worker ==> |Procesa Datos| Master
     Master ==> |Guarda Resultados| Output_Local
-    Master -.-> |"Conexión JDBC (Opcional)"| Postgres
+    Master -.-> |"Conexión JDBC (Persistencia)"| Postgres
 
     %% Estilos Globales Profesionales
     classDef default fill:#fff,stroke:#000,stroke-width:2px,color:#000;
@@ -89,7 +89,7 @@ graph LR
         A[("📥 Carga Datos<br>(CSV QoG)")] ==> B{"🌍 Filtrado<br>(Solo Magreb)"}
         B ==> C["🧹 Limpieza<br>(Nulos & Tipos)"]
         C ==> D["🧮 Transformación<br>(Variables Derivadas)"]
-        D ==> E[("💾 Guardar<br>(Parquet)")]
+        D ==> E[("💾 Guardar<br>(Parquet + PostgreSQL)")]
         D ==> F["📊 Visualización<br>(Matplotlib/Seaborn)"]
         F ==> G[("🖼️ Exportar<br>(5 Gráficos PNG)")]
     end
@@ -104,7 +104,7 @@ graph LR
 Esta infraestructura despliega un **cluster de procesamiento de Big Data** utilizando contenedores Docker. El objetivo es crear un entorno aislado y reproducible para ejecutar tareas de ETL y análisis con Apache Spark. El cluster consta de tres servicios principales: un nodo maestro de Spark, un nodo trabajador y una base de datos PostgreSQL.
 
 ### 2.4 Servicios y Volúmenes
-- **PostgreSQL (`postgres:16-alpine`):** Sirve como almacén de datos persistente.
+- **PostgreSQL (`postgres:16-alpine`):** Sirve como almacén de datos persistente (Data Warehouse).
 - **Spark Master/Worker (`apache/spark:3.5.4-python3`):** Orquestan y ejecutan el procesamiento de datos. La UI del Master se expone en el puerto `8080`.
 - **Volúmenes:** Se utilizan para mapear las carpetas locales (`datos/`, `outputs/`) y los archivos de código (`pipeline.py`, `requirements.txt`) al entorno de Docker, permitiendo una interacción fluida y la persistencia de los resultados.
 
@@ -149,16 +149,38 @@ Spark usa **evaluación perezosa**: `spark.read.csv()` solo define un plan. La e
 
 ## 5. Cómo Ejecutar este Proyecto
 
+### 5.1 Requisitos Previos
+*   Docker Desktop instalado y corriendo.
+*   Conexión a internet (para descargar datos y drivers).
+
+### 5.2 Pasos de Ejecución
+
 1.  **Levantar la infraestructura:**
     ```sh
     docker compose up -d
     ```
-2.  **Instalar dependencias:**
+
+2.  **Instalar dependencias (Python):**
+    Es necesario instalar las librerías dentro del contenedor Spark Master.
     ```sh
-    docker compose exec -u 0 spark-master pip install -r /workspace/requirements.txt
+    docker compose exec -u 0 spark-master pip install --default-timeout=1000 -r /workspace/requirements.txt
     ```
-3.  **Ejecutar el pipeline completo:**
+
+3.  **Ejecutar el Pipeline Completo (Escalado):**
+    Este comando ejecuta el script descargando automáticamente el driver JDBC de PostgreSQL para permitir la persistencia en base de datos.
     ```sh
-    docker compose exec spark-master /opt/spark/bin/spark-submit /workspace/pipeline.py
+    docker compose exec -u 0 spark-master /opt/spark/bin/spark-submit --packages org.postgresql:postgresql:42.6.0 /workspace/pipeline.py
     ```
-4.  **Ver los resultados:** Los gráficos generados se encontrarán en la carpeta `outputs/graficos`.
+
+4.  **Verificar Resultados:**
+    *   **Gráficos:** En la carpeta `outputs/graficos`.
+    *   **Base de Datos:** Puedes consultar la tabla generada directamente:
+        ```sh
+        docker compose exec postgres psql -U qoguser -d qogdb -c "SELECT * FROM indicadores_magreb LIMIT 5;"
+        ```
+        ![Consulta SQL](outputs/graficos/consultasql.jpeg)
+
+5.  **Detener el Cluster:**
+    ```sh
+    docker compose down
+    ```
