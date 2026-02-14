@@ -7,6 +7,9 @@ __pycache__/
 .idea/
 .DS_Store
 
+# Ignorar la carpeta de construcción del sitio web
+site/
+
 # Ignorar archivos temporales en outputs (como parquets intermedios si los hubiera fuera de lugar)
 outputs/*
 
