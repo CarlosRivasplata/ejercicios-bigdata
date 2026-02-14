@@ -65,6 +65,48 @@ He seleccionado los 5 países principales del Magreb debido a su relevancia geop
 
 ---
 
+## Arquitectura del Sistema
+
+```mermaid
+graph TD
+    subgraph Host_Machine [Tu Computadora (Host)]
+        CSV[("📂 Datos CSV (QoG)")]
+        Code["📜 pipeline.py"]
+        Output_Local["📂 outputs/ (Gráficos)"]
+    end
+
+    subgraph Docker_Environment [🐳 Docker Compose Cluster]
+        direction TB
+        
+        subgraph Spark_Cluster [Apache Spark Cluster]
+            Master["🧠 Spark Master<br>(Puerto 8080)"]
+            Worker["💪 Spark Worker<br>(2GB RAM, 2 Cores)"]
+        end
+        
+        Postgres[("🐘 PostgreSQL<br>(Puerto 5432)")]
+    end
+
+    %% Conexiones de Volúmenes
+    CSV -.-> |Volumen /workspace/datos| Master
+    Code -.-> |Volumen /workspace/src| Master
+    
+    %% Flujo de Datos
+    Master --> |Asigna Tareas| Worker
+    Worker --> |Procesa Datos| Master
+    Master --> |Guarda Resultados| Output_Local
+    Master -.-> |Conexión JDBC (Opcional)| Postgres
+
+    %% Estilos
+    style Host_Machine fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style Docker_Environment fill:#e1f5fe,stroke:#0277bd,stroke-width:2px
+    style Spark_Cluster fill:#fff3e0,stroke:#ef6c00,stroke-width:2px
+    style Master fill:#ffcc80,stroke:#ef6c00
+    style Worker fill:#ffe0b2,stroke:#ef6c00
+    style Postgres fill:#b2dfdb,stroke:#00695c
+```
+
+---
+
 ## Ejecución
 
 Para reproducir este análisis:
