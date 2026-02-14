@@ -96,7 +96,7 @@ graph TD
     Master --> |Asigna Tareas| Worker
     Worker --> |Procesa Datos| Master
     Master --> |Guarda Resultados| Output_Local
-    Master -.-> |Conexión JDBC (Opcional)| Postgres
+    Master -.-> |"Conexión JDBC (Opcional)"| Postgres
 
     %% Estilos
     style Host_Machine fill:#f9f9f9,stroke:#333,stroke-width:2px
