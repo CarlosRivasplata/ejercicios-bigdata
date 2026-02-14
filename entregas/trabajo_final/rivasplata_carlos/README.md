@@ -45,16 +45,16 @@ Por lo tanto, se ha seleccionado el **Análisis Comparativo y Correlacional** co
 
 ```mermaid
 graph TD
-    subgraph Host_Machine [Tu Computadora (Host)]
+    subgraph Host_Machine ["Tu Computadora (Host)"]
         CSV[("📂 Datos CSV (QoG)")]
         Code["📜 pipeline.py"]
         Output_Local["📂 outputs/ (Gráficos)"]
     end
 
-    subgraph Docker_Environment [🐳 Docker Compose Cluster]
+    subgraph Docker_Environment ["🐳 Docker Compose Cluster"]
         direction TB
         
-        subgraph Spark_Cluster [Apache Spark Cluster]
+        subgraph Spark_Cluster ["Apache Spark Cluster"]
             Master["🧠 Spark Master<br>(Puerto 8080)"]
             Worker["💪 Spark Worker<br>(2GB RAM, 2 Cores)"]
         end
@@ -85,7 +85,7 @@ graph TD
 
 ```mermaid
 graph LR
-    subgraph ETL_Process [Pipeline de Datos (pipeline.py)]
+    subgraph ETL_Process ["Pipeline de Datos (pipeline.py)"]
         direction LR
         A[("📥 Carga Datos<br>(CSV QoG)")] --> B{"🌍 Filtrado<br>(Solo Magreb)"}
         B --> C["🧹 Limpieza<br>(Nulos & Tipos)"]
