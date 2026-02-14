@@ -67,6 +67,8 @@ He seleccionado los 5 países principales del Magreb debido a su relevancia geop
 
 ## Arquitectura del Sistema
 
+### Diagrama de Infraestructura (Docker)
+
 ```mermaid
 graph TD
     subgraph Host_Machine [Tu Computadora (Host)]
@@ -103,6 +105,26 @@ graph TD
     style Master fill:#ffcc80,stroke:#ef6c00
     style Worker fill:#ffe0b2,stroke:#ef6c00
     style Postgres fill:#b2dfdb,stroke:#00695c
+```
+
+### Diagrama de Flujo del Pipeline (ETL)
+
+```mermaid
+graph LR
+    subgraph ETL_Process [Pipeline de Datos (pipeline.py)]
+        direction LR
+        A[("📥 Carga Datos<br>(CSV QoG)")] --> B{"🌍 Filtrado<br>(Solo Magreb)"}
+        B --> C["🧹 Limpieza<br>(Nulos & Tipos)"]
+        C --> D["🧮 Transformación<br>(Variables Derivadas)"]
+        D --> E[("💾 Guardar<br>(Parquet)")]
+        D --> F["📊 Visualización<br>(Matplotlib/Seaborn)"]
+        F --> G[("🖼️ Exportar<br>(5 Gráficos PNG)")]
+    end
+    
+    style ETL_Process fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style A fill:#e1bee7,stroke:#4a148c
+    style E fill:#b2dfdb,stroke:#004d40
+    style G fill:#ffccbc,stroke:#bf360c
 ```
 
 ---

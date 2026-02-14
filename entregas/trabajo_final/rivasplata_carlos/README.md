@@ -81,15 +81,35 @@ graph TD
     style Postgres fill:#b2dfdb,stroke:#00695c
 ```
 
-### 2.2 Descripción General
+### 2.2 Diagrama de Flujo del Pipeline (ETL)
+
+```mermaid
+graph LR
+    subgraph ETL_Process [Pipeline de Datos (pipeline.py)]
+        direction LR
+        A[("📥 Carga Datos<br>(CSV QoG)")] --> B{"🌍 Filtrado<br>(Solo Magreb)"}
+        B --> C["🧹 Limpieza<br>(Nulos & Tipos)"]
+        C --> D["🧮 Transformación<br>(Variables Derivadas)"]
+        D --> E[("💾 Guardar<br>(Parquet)")]
+        D --> F["📊 Visualización<br>(Matplotlib/Seaborn)"]
+        F --> G[("🖼️ Exportar<br>(5 Gráficos PNG)")]
+    end
+    
+    style ETL_Process fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
+    style A fill:#e1bee7,stroke:#4a148c
+    style E fill:#b2dfdb,stroke:#004d40
+    style G fill:#ffccbc,stroke:#bf360c
+```
+
+### 2.3 Descripción General
 Esta infraestructura despliega un **cluster de procesamiento de Big Data** utilizando contenedores Docker. El objetivo es crear un entorno aislado y reproducible para ejecutar tareas de ETL y análisis con Apache Spark. El cluster consta de tres servicios principales: un nodo maestro de Spark, un nodo trabajador y una base de datos PostgreSQL.
 
-### 2.3 Servicios y Volúmenes
+### 2.4 Servicios y Volúmenes
 - **PostgreSQL (`postgres:16-alpine`):** Sirve como almacén de datos persistente.
 - **Spark Master/Worker (`apache/spark:3.5.4-python3`):** Orquestan y ejecutan el procesamiento de datos. La UI del Master se expone en el puerto `8080`.
 - **Volúmenes:** Se utilizan para mapear las carpetas locales (`datos/`, `outputs/`) y los archivos de código (`pipeline.py`, `requirements.txt`) al entorno de Docker, permitiendo una interacción fluida y la persistencia de los resultados.
 
-### 2.4 Captura de Pantalla (Spark UI)
+### 2.5 Captura de Pantalla (Spark UI)
 ![Spark UI](outputs/graficos/spark_ui.jpeg)
 
 ---
