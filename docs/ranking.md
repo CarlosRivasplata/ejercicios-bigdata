@@ -103,7 +103,7 @@ details[open] > summary {
 Tabla de posiciones del curso Big Data con Python
 </p>
 <p style="color: #666; font-size: 0.9em;">
-Ultima actualizacion: 2026-02-14 01:18 | Evaluacion automatica del curso
+Ultima actualizacion: 2026-02-14 01:43 | Ranking actualizado semanalmente
 </p>
 </div>
 
@@ -162,9 +162,21 @@ Ultima actualizacion: 2026-02-14 01:18 | Evaluacion automatica del curso
 
 ---
 
+<div style="background: linear-gradient(180deg, #1a1a2e, #0f0f23); border-radius: 14px; padding: 24px 28px; margin: 30px 0; border: 1px solid rgba(255,255,255,0.05);"><h3 style="color: #ccc; margin: 0 0 18px; border: none; font-size: 1.05em;">&#9878; Reglas del Ranking</h3><div style="margin: 14px 0; padding: 14px; background: rgba(249,212,35,0.04); border-radius: 10px; border-left: 3px solid #f9d42340;"><h4 style="color: #f9d423; margin: 0 0 8px; border: none; font-size: 0.95em;">&#127891; Promocion 2026 (18 alumnos)</h4><p style="color: #999; font-size: 0.88em; margin: 0; line-height: 1.6;">Ventana de entrega: 13 feb - 31 mar 2026. Entregas puntuales (antes del 13 feb) mantienen su nota intacta. Entregas tardias reciben penalizacion progresiva: 0-24h (-15%), 1-3 dias (-25%), 3-7 dias (-40%), mas de 7 dias (-50%). Despues del 31 de marzo las notas se congelan definitivamente.</p></div><div style="margin: 14px 0; padding: 14px; background: rgba(102,126,234,0.04); border-radius: 10px; border-left: 3px solid #667eea40;"><h4 style="color: #667eea; margin: 0 0 8px; border: none; font-size: 0.95em;">&#127760; Comunidad (ranking anual)</h4><p style="color: #999; font-size: 0.88em; margin: 0; line-height: 1.6;">Cualquier persona puede completar el curso y aparecer en el ranking de su ano (2026, 2027...). Requisitos: fork con minimo 30 dias de antiguedad y entregas reales. No compiten con la Promocion 2026. Mismos criterios de evaluacion.</p></div><div style="margin: 14px 0 0; padding: 14px; background: rgba(46,204,113,0.04); border-radius: 10px; border-left: 3px solid #2ecc7140;"><h4 style="color: #2ecc71; margin: 0 0 8px; border: none; font-size: 0.95em;">&#128200; Criterios de Evaluacion</h4><p style="color: #999; font-size: 0.88em; margin: 0; line-height: 1.6;">D (Doc, 60%): calidad, autenticidad y estructura del PROMPTS.md. C (Cod, 40%): archivos Python, notebooks, SQL y estructura del proyecto. Sin PROMPTS.md se aplica penalizacion adicional del 30%. La nota final puede verse afectada por similitud con el ejemplo del profesor.</p></div></div>
+
+
+---
+
+<h2 style="border: none;">Ranking Comunidad</h2>
+
+<div style="text-align: center; padding: 30px 20px; background: linear-gradient(180deg, #1a1a2e, #0f0f23); border-radius: 14px; margin: 20px 0; border: 1px solid rgba(255,255,255,0.05);"><div style="font-size: 2em; margin-bottom: 10px;">&#127760;</div><p style="color: #888; font-size: 0.95em;">Aun no hay participantes de la comunidad. Haz un fork del repositorio, completa el curso y aparece aqui!</p></div>
+
+
+---
+
 <p style="text-align: center; color: #555; font-size: 0.85em; margin-top: 40px;">
 El ranking se actualiza automaticamente con cada evaluacion. Entrega tu trabajo para aparecer!<br>
-<em>Generado por: evaluar v3.0 | 2026-02-14 01:18</em>
+<em>Generado por: evaluar v3.0 | 2026-02-14 01:43</em>
 </p>
 
 ---
